@@ -1,44 +1,53 @@
 package uax.android.moodle;
 
-import android.app.ListActivity;
+import android.app.TabActivity;
+import android.content.Intent;
+import android.content.res.Resources;
+import android.content.res.Resources.NotFoundException;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
+import android.widget.TabHost;
 import android.widget.TextView;
-import android.widget.Toast;
-import android.widget.AdapterView.OnItemClickListener;
 
-public class android extends ListActivity {
+public class android extends TabActivity {
     /** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //Hola mundo
-        /*TextView tv = new TextView(this);
-        tv.setText("hola, mundo!");
-        setContentView(tv);*/
-        
-        //lista de elementos
-        String[] countries = getResources().getStringArray(R.array.countries_array);
-        setListAdapter(new ArrayAdapter<String>(this, R.layout.list_item, countries));
+        setContentView(R.layout.main);
 
-        
-        
-        ListView lv = getListView();
-        lv.setTextFilterEnabled(true);
+        try {
+			Resources res = getResources(); // Resource object to get Drawables
+			TabHost tabHost = getTabHost();  // The activity TabHost
+			TabHost.TabSpec spec;  // Resusable TabSpec for each tab
+			Intent intent;  // Reusable Intent for each tab
 
-        lv.setOnItemClickListener(new OnItemClickListener() {
-          public void onItemClick(AdapterView<?> parent, View view,
-              int position, long id) {
-            // When clicked, show a toast with the TextView text
-            Toast.makeText(getApplicationContext(), ((TextView) view).getText(),
-                Toast.LENGTH_SHORT).show();
-          }
-        });
+			// Create an Intent to launch an Activity for the tab (to be reused)
+			intent = new Intent().setClass(this, GroupList.class);
+
+			// Initialize a TabSpec for each tab and add it to the TabHost
+			spec = tabHost.newTabSpec("artists").setIndicator("Artists",
+			                  res.getDrawable(R.drawable.ic_tab_artists_grey))
+			              .setContent(intent);
+			tabHost.addTab(spec);
+
+			// Do the same for the other tabs
+			intent = new Intent().setClass(this, UserList.class);
+			spec = tabHost.newTabSpec("albums").setIndicator("Albums",
+			                  res.getDrawable(R.drawable.ic_tab_artists_grey))
+			              .setContent(intent);
+			tabHost.addTab(spec);
+
+			/*intent = new Intent().setClass(this, SongsActivity.class);
+			spec = tabHost.newTabSpec("songs").setIndicator("Songs",
+			                  res.getDrawable(R.drawable.ic_tab_songs))
+			              .setContent(intent);
+			tabHost.addTab(spec);*/
+
+			tabHost.setCurrentTab(1);
+		} catch (NotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
     }
-    
-    
     
 }
