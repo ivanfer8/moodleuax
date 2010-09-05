@@ -1,53 +1,96 @@
 package uax.android.moodle;
 
-import android.app.TabActivity;
-import android.content.Intent;
-import android.content.res.Resources;
-import android.content.res.Resources.NotFoundException;
+import java.util.ArrayList;
+
+import javax.ws.rs.core.MultivaluedMap;
+
+import android.app.Activity;
+import android.graphics.Color;
 import android.os.Bundle;
-import android.widget.TabHost;
-import android.widget.TextView;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 
-public class android extends TabActivity {
+import com.sun.jersey.api.client.Client;
+import com.sun.jersey.api.client.ClientResponse;
+import com.sun.jersey.api.client.WebResource;
+import com.sun.jersey.core.util.MultivaluedMapImpl;
+import com.thoughtworks.xstream.XStream;
+import com.thoughtworks.xstream.io.xml.DomDriver;
+
+import conv.android.moodle.MyUserConverter;
+import fac.android.moodle.User;
+
+public class android extends Activity {
     /** Called when the activity is first created. */
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.main);
+	
+	private Button mBuscar = null;
+	private EditText mTexto = null;
+	
+	@Override
+	public void onCreate(Bundle savedInstanceState) {
+	    super.onCreate(savedInstanceState);
+	    setContentView(R.layout.main);
+	    
+	    mBuscar = (Button)findViewById(R.id.buscar);
+		mTexto = (EditText)findViewById(R.id.token);
+		
+		mTexto.setTextColor(Color.BLUE);
+		mTexto.setText("4ae93a61942f8a07e5f738281807819a");
+		
+		mBuscar.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				ArrayList<User> usuario = (ArrayList<User>) listUserById(mTexto.getText().toString(), "moodle_user_get_users_by_id");
+				EditText nombreUsu = (EditText)findViewById(R.id.nombre);
+				if(!usuario.equals(null))
+					nombreUsu.setText(usuario.get(0).getName());
+				else
+				{
+					nombreUsu.setBackgroundColor(Color.RED);
+					nombreUsu.setText("Error");
+				}
+			}
+		});
+		
+	}
+	
+	public ArrayList<User> listUserById(String token, String moodleWebService){
+		//WebService list_user_By_Id
+		try {
+			Client client = Client.create();
+			
+			WebResource webResource = client.resource("http://127.0.0.1/moodle/webservice/rest/server.php");
 
-        try {
-			Resources res = getResources(); // Resource object to get Drawables
-			TabHost tabHost = getTabHost();  // The activity TabHost
-			TabHost.TabSpec spec;  // Resusable TabSpec for each tab
-			Intent intent;  // Reusable Intent for each tab
+			MultivaluedMap<String, String> urlParams = new MultivaluedMapImpl();
+			urlParams.add("wstoken", token);
+			urlParams.add("wsfunction", moodleWebService);
 
-			// Create an Intent to launch an Activity for the tab (to be reused)
-			intent = new Intent().setClass(this, GroupList.class);
+			MultivaluedMap<String, String> formData = new MultivaluedMapImpl();
+			formData.add("userids[0]","1");
+			
+			ClientResponse response = webResource.queryParams(urlParams).post(ClientResponse.class, formData);
+			
+			/*String xml = response.getEntity(String.class);
+			
+			XStream xstream = new XStream(new DomDriver());
+			xstream.registerConverter(new MyUserConverter());
+			xstream.alias("RESPONSE",User.class);
 
-			// Initialize a TabSpec for each tab and add it to the TabHost
-			spec = tabHost.newTabSpec("artists").setIndicator("Artists",
-			                  res.getDrawable(R.drawable.ic_tab_artists_grey))
-			              .setContent(intent);
-			tabHost.addTab(spec);
+			ArrayList<User> listUser = (ArrayList<User>) xstream.fromXML(xml);
 
-			// Do the same for the other tabs
-			intent = new Intent().setClass(this, UserList.class);
-			spec = tabHost.newTabSpec("albums").setIndicator("Albums",
-			                  res.getDrawable(R.drawable.ic_tab_artists_grey))
-			              .setContent(intent);
-			tabHost.addTab(spec);
-
-			/*intent = new Intent().setClass(this, SongsActivity.class);
-			spec = tabHost.newTabSpec("songs").setIndicator("Songs",
-			                  res.getDrawable(R.drawable.ic_tab_songs))
-			              .setContent(intent);
-			tabHost.addTab(spec);*/
-
-			tabHost.setCurrentTab(1);
-		} catch (NotFoundException e) {
+			System.out.println(listUser.get(0).getName());
+			
+			return listUser;*/
+			return null;
+			
+		}catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
-    }
-    
+			System.err.println(e.toString());
+			return null;
+		}		
+	}
+
 }

@@ -1,4 +1,4 @@
-package uax.android.moodle;
+package conv.android.moodle;
 
 import java.util.ArrayList;
 
@@ -10,7 +10,7 @@ import com.thoughtworks.xstream.io.HierarchicalStreamWriter;
 
 import fac.android.moodle.User;
 
-public class UserConverter implements Converter {
+public class MyUserConverter implements Converter {
 	
 	public boolean canConvert(Class clazz) {
 		return clazz.equals(User.class);
