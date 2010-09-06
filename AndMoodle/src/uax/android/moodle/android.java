@@ -1,8 +1,22 @@
 package uax.android.moodle;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 import javax.ws.rs.core.MultivaluedMap;
+
+import org.apache.http.HttpResponse;
+import org.apache.http.HttpVersion;
+import org.apache.http.client.ClientProtocolException;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.ResponseHandler;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.client.methods.HttpUriRequest;
+import org.apache.http.impl.client.BasicResponseHandler;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.params.BasicHttpParams;
+import org.apache.http.params.HttpParams;
+import org.apache.http.params.HttpProtocolParams;
 
 import android.app.Activity;
 import android.graphics.Color;
@@ -26,6 +40,7 @@ public class android extends Activity {
 	
 	private Button mBuscar = null;
 	private EditText mTexto = null;
+	private final String DEBUG_TAG = "httpPostExample";
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -61,7 +76,7 @@ public class android extends Activity {
 		try {
 			Client client = Client.create();
 			
-			WebResource webResource = client.resource("http://127.0.0.1/moodle/webservice/rest/server.php");
+			WebResource webResource = client.resource("http://192.168.1.34/moodle/webservice/rest/server.php");
 
 			MultivaluedMap<String, String> urlParams = new MultivaluedMapImpl();
 			urlParams.add("wstoken", token);
@@ -70,9 +85,16 @@ public class android extends Activity {
 			MultivaluedMap<String, String> formData = new MultivaluedMapImpl();
 			formData.add("userids[0]","1");
 			
-			ClientResponse response = webResource.queryParams(urlParams).post(ClientResponse.class, formData);
+			//ClientResponse response = webResource.queryParams(urlParams).type("application/xml").post(ClientResponse.class, formData);
 			
-			/*String xml = response.getEntity(String.class);
+			HttpClient httpclient = new DefaultHttpClient(); 
+			HttpResponse response;
+            response = httpclient.execute( (HttpUriRequest) webResource.queryParams(urlParams).type("application/xml").post(ClientResponse.class, formData));
+			
+			
+			String xml = "";// response.getEntity(String.class);
+			
+			
 			
 			XStream xstream = new XStream(new DomDriver());
 			xstream.registerConverter(new MyUserConverter());
@@ -82,13 +104,38 @@ public class android extends Activity {
 
 			System.out.println(listUser.get(0).getName());
 			
-			return listUser;*/
-			return null;
+			return listUser;
 			
 		}catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-			System.err.println(e.toString());
+			ResponseHandler<String> handler = new BasicResponseHandler();  
+			        	
+			HttpParams params = new BasicHttpParams();
+			
+			
+        	HttpClient httpclient = new DefaultHttpClient();  
+            HttpPost request = new HttpPost("http://192.168.1.34/moodle/webservice/rest/server.php");  
+            request.addHeader("wstoken", token);
+            request.addHeader("wsfunction", moodleWebService);
+//            request.setParams(data);
+            
+            HttpProtocolParams.setVersion( params, HttpVersion.HTTP_1_1);
+            HttpProtocolParams.setContentCharset( params, "UTF-8");
+            HttpProtocolParams.setUseExpectContinue( params, false);
+            
+            params.setParameter("userids[0]","1");
+            try {
+            	HttpResponse response;
+                response = httpclient.execute( request);
+			} catch (ClientProtocolException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}  
+			System.out.println("ERROR: "+e.getMessage());
 			return null;
 		}		
 	}
