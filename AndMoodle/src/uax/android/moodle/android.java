@@ -28,7 +28,7 @@ public class android extends Activity {
 	private Button mBuscar = null;
 	private EditText mTexto = null;
 	private MultipartEntity entity = new MultipartEntity();
-	private ErrorException error = null;
+	private ErrorException error = new ErrorException();
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -46,12 +46,13 @@ public class android extends Activity {
 			@Override
 			public void onClick(View v) {
 				try {
-					entity.addPart("userids[0]", new StringBody("a"));
-					ArrayList<User> usuario = (ArrayList<User>) listUserById(
+					entity.addPart("userids[0]", new StringBody("2"));
+					ArrayList<User> usuario = new ArrayList<User>();
+						usuario = (ArrayList<User>) listUserById(
 							mTexto.getText().toString(),
 							"moodle_user_get_users_by_id", entity);
 					EditText nombreUsu = (EditText) findViewById(R.id.nombre);
-					if (!usuario.equals(null))
+					if (!usuario.isEmpty())
 						nombreUsu.setText(usuario.get(0).getName());
 					else {
 						nombreUsu.setBackgroundColor(Color.RED);
@@ -76,7 +77,6 @@ public class android extends Activity {
 			String xml = cws.Consume();
 			ArrayList<User> listUser = null;
 			CharSequence exception = "EXCEPTION";
-			boolean aux = xml.contains(exception);
 
 			// comprobamos que no haya un error
 			if (!xml.substring(0, 4).equals("ERROR")&&!xml.contains(exception)) {
@@ -90,7 +90,7 @@ public class android extends Activity {
 			{
 				XStream xstream = new XStream(new DomDriver());
 				xstream.registerConverter(new ErrorConverter());
-				xstream.alias("EXCEPTION", ErrorConverter.class);
+				xstream.alias("MESSAGE", ErrorException.class);
 				error = (ErrorException) xstream.fromXML(xml);
 			}
 			else

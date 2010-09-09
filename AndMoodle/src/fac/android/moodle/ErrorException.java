@@ -9,6 +9,7 @@ public class ErrorException {
 	}
 
 	public ErrorException(String codError, String descError) {
+		super();
 		this.codError = codError;
 		this.descError = descError;
 	}

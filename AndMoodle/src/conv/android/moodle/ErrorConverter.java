@@ -7,11 +7,10 @@ import com.thoughtworks.xstream.io.HierarchicalStreamReader;
 import com.thoughtworks.xstream.io.HierarchicalStreamWriter;
 
 import fac.android.moodle.ErrorException;
-import fac.android.moodle.User;
 
 public class ErrorConverter implements Converter {
 	public boolean canConvert(Class clazz) {
-		return clazz.equals(User.class);
+		return clazz.equals(ErrorConverter.class);
 	}
 
 	// This converts to XML
@@ -20,15 +19,14 @@ public class ErrorConverter implements Converter {
 	}
 
 	// This converts from XML
-	public Object unmarshal(HierarchicalStreamReader reader,
-			UnmarshallingContext context) {
+	public Object unmarshal(HierarchicalStreamReader reader, UnmarshallingContext context) {
 		ErrorException error = new ErrorException();
+		System.out.println();
 		try {
 
 			reader.moveDown(); // we are in MESSAGE
-
 			error.setDescError(reader.getValue().toString());
-
+			error.setCodError("");
 			return error;
 		} catch (Exception e) {
 			// Auto-generated catch block
