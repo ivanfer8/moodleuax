@@ -8,6 +8,7 @@ import com.thoughtworks.xstream.converters.UnmarshallingContext;
 import com.thoughtworks.xstream.io.HierarchicalStreamReader;
 import com.thoughtworks.xstream.io.HierarchicalStreamWriter;
 
+import fac.android.moodle.ErrorException;
 import fac.android.moodle.User;
 
 public class MyUserConverter implements Converter {
@@ -93,9 +94,9 @@ public class MyUserConverter implements Converter {
 			
 			return listUser;
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			return null;
+			// Obtenemos el código del error
+			ErrorException error = new ErrorException("", e.getMessage());
+			return error;
 		}
 	}
 	
