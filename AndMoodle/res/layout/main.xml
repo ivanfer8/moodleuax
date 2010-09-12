@@ -19,7 +19,7 @@
 				android:layout_height="fill_parent"
 				android:layout_weight="1">			
 				<EditText 
-					android:id="@+id/token" 
+					android:id="@+id/paramToken" 
 					android:layout_width="fill_parent"
 			        android:layout_height="wrap_content"
 			        android:background="@android:drawable/editbox_background"
@@ -49,4 +49,9 @@
 		    android:layout_height="fill_parent"
 		    android:text="@string/no_items"/>
 	</LinearLayout>
+	<Button 
+		android:id="@+id/Button01" 
+		android:layout_width="wrap_content" 
+		android:layout_height="wrap_content">
+	</Button>
 </LinearLayout>
