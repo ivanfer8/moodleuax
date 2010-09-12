@@ -2,6 +2,8 @@ package uax.android.moodle;
 
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
+import java.util.NoSuchElementException;
+import java.util.StringTokenizer;
 
 import org.apache.http.entity.mime.MultipartEntity;
 import org.apache.http.entity.mime.content.StringBody;
@@ -9,21 +11,26 @@ import org.apache.http.entity.mime.content.StringBody;
 import android.app.ListActivity;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Log;
+import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.AdapterView;
+import android.view.View.OnClickListener;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.AdapterView.OnItemClickListener;
 
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.io.xml.DomDriver;
@@ -40,22 +47,23 @@ public class android extends ListActivity {
 	private ArrayList<User> usuario = null;
 	private OrderAdapter m_adapter;
 	private Runnable viewOrders;
-	private String token = "4ae93a61942f8a07e5f738281807819a";
+	private String token;
 	private String funcion = "moodle_user_get_users_by_id";
 	private ErrorException error = new ErrorException();
 	private MultipartEntity entity = new MultipartEntity();
 
 	private ImageButton mBuscar = null;
+	private Button pButton = null;
 	private EditText mTexto = null;
+	private SharedPreferences preferences;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		//quitar barra superior
+		// quitar barra superior
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
-		this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-		WindowManager.LayoutParams.FLAG_FULLSCREEN); 
-		
+		this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
 		setContentView(R.layout.main);
 		usuario = new ArrayList<User>();
 		this.m_adapter = new OrderAdapter(this, R.layout.row, usuario);
@@ -65,7 +73,10 @@ public class android extends ListActivity {
 		 */
 
 		mBuscar = (ImageButton) findViewById(R.id.ok);
-		mTexto = (EditText) findViewById(R.id.token);
+		mTexto = (EditText) findViewById(R.id.paramToken);
+		// Inicializamos las preferencias, el token del usuario
+		preferences = PreferenceManager.getDefaultSharedPreferences(this);
+		this.token = preferences.getString("token", "n/a");
 
 		/*
 		 * Pulsamos la lupa para buscar usuarios
@@ -78,14 +89,9 @@ public class android extends ListActivity {
 				viewOrders = new Runnable() {
 					@Override
 					public void run() {
-						try {
-							usuario = new ArrayList<User>();
-							entity.addPart("userids[0]", new StringBody("2"));
-							listUserById(token, funcion, entity);
-						} catch (UnsupportedEncodingException e) {
-							// TODO Auto-generated catch block
-							e.printStackTrace();
-						}
+						usuario = new ArrayList<User>();
+						recogerId();
+						listUserById(token, funcion, entity);
 					}
 				};
 				Thread thread = new Thread(null, viewOrders, "MagentoBackground");
@@ -95,16 +101,68 @@ public class android extends ListActivity {
 			}
 		});
 
+		/*
+		 * Pulsamos las preferencias para cambiar el token
+		 */
+
+		pButton = (Button) findViewById(R.id.Button01);
+		this.pButton.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				String token = preferences.getString("token", "n/a");
+				Toast.makeText(android.this, "You maintained token: " + token, Toast.LENGTH_LONG).show();
+
+			}
+		});
+
 	}
-	
+
+	// This method is called once the menu is selected
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		switch (item.getItemId()) {
+		// We have only one menu option
+		case R.id.tokenUsu:
+			// Launch Preference activity
+			Intent i = new Intent(android.this, Preferences.class);
+			startActivity(i);
+			// A toast is a view containing a quick little message for the user.
+			Toast.makeText(android.this, "Here you can maintain your user credentials.", Toast.LENGTH_LONG).show();
+			break;
+
+		}
+		return true;
+	}
+
+	/*
+	 * Seleccionar un elemento de la lista
+	 * 
+	 * @see android.app.ListActivity#onListItemClick(android.widget.ListView,
+	 * android.view.View, int, long)
+	 */
 	protected void onListItemClick(ListView l, View v, int position, long id) {
 		super.onListItemClick(l, v, position, id);
 		// Get the item that was clicked
-		Toast.makeText(getApplicationContext(), "You have clicked on " + ((User)l.getItemAtPosition(position)).getId(), Toast.LENGTH_SHORT).show();
+		Toast.makeText(getApplicationContext(), "You have clicked on " + ((User) l.getItemAtPosition(position)).getId(), Toast.LENGTH_SHORT).show();
 
 	}
 
+	/*
+	 * Menu para añadir el token del usuario
+	 * 
+	 * @see android.app.Activity#onCreateOptionsMenu(android.view.Menu)
+	 */
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		MenuInflater inflater = getMenuInflater();
+		inflater.inflate(R.menu.menu, menu);
+		return true;
+	}
 
+	/*
+	 * Recargar lista
+	 */
 	private Runnable returnRes = new Runnable() {
 
 		@Override
@@ -119,6 +177,9 @@ public class android extends ListActivity {
 		}
 	};
 
+	/*
+	 * Lanzar web service con las opciones elegidas
+	 */
 	@SuppressWarnings("unchecked")
 	private void listUserById(String token, String moodleWebService, MultipartEntity entity) {
 		// WebService list_user_By_Id
@@ -136,11 +197,10 @@ public class android extends ListActivity {
 				xstream.registerConverter(new MyUserConverter());
 				xstream.alias("RESPONSE", User.class);
 				usuario = (ArrayList<User>) xstream.fromXML(xml);
-				Log.i("--ARRAY", "" + usuario.size());
 			} else if (xml.contains(exception)) {
 				XStream xstream = new XStream(new DomDriver());
 				xstream.registerConverter(new ErrorConverter());
-				xstream.alias("MESSAGE", ErrorException.class);
+				xstream.alias("EXCEPTION", ErrorException.class);
 				error = (ErrorException) xstream.fromXML(xml);
 			} else {
 				error.setDescError(xml);
@@ -156,6 +216,9 @@ public class android extends ListActivity {
 		runOnUiThread(returnRes);
 	}
 
+	/*
+	 * Pintar la lista
+	 */
 	private class OrderAdapter extends ArrayAdapter<User> {
 
 		private ArrayList<User> items;
@@ -177,13 +240,34 @@ public class android extends ListActivity {
 				TextView tt = (TextView) v.findViewById(R.id.toptext);
 				TextView bt = (TextView) v.findViewById(R.id.bottomtext);
 				if (tt != null) {
-					tt.setText("Name: " + o.getId());
+					tt.setText("Id Usuario: " + o.getId());
 				}
 				if (bt != null) {
-					bt.setText("Status: " + o.getName());
+					bt.setText("Nombre: " + o.getName());
 				}
 			}
 			return v;
+		}
+	}
+
+	/*
+	 * Recogemos los ids que ha metido el usuario en la caja de texto
+	 */
+	private void recogerId() {
+		try {
+			String ids = mTexto.getText().toString();
+			StringTokenizer token = new StringTokenizer(ids, ",");
+			int i = 0;
+			while (token.hasMoreTokens()) {
+				entity.addPart("userids[" + i +"]", new StringBody(token.nextToken()));
+				i++;
+			}
+
+		} catch (UnsupportedEncodingException e) {
+			// Auto-generated catch block
+			e.printStackTrace();
+		} catch (NoSuchElementException e) {
+			e.printStackTrace();
 		}
 	}
 }
