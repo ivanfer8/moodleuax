@@ -5,10 +5,12 @@
 
 	<string name="interfaz">Interfaz</string>
 
-	<string name="token">Token:</string>
+	<string name="idUsuario">Usarios:</string>
 
 	<string name="cantidad">Cantidad</string>
 
 	<string name="buscar">Buscar</string>
-	<string name="nombre">Nombre:</string>
+	<string name="nombre">Nombre:</string>	
+	
+	<string name="no_items">No orders to display</string>
 </resources>
