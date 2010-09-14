@@ -21,11 +21,13 @@ public class CallWebService {
 	private String token;
 	private String moodleWebService;
 	private MultipartEntity entity;
+	private String host;
 
-	public CallWebService(String token, String moodleWebService, MultipartEntity entity) {
+	public CallWebService(String token, String moodleWebService,String host, MultipartEntity entity) {
 		this.token = token;
 		this.moodleWebService = moodleWebService;
 		this.entity = entity;
+		this.host = host;
 	}
 
 	public String Consume(){
@@ -33,9 +35,9 @@ public class CallWebService {
 		String responseXml = "";
 		try {
 			HttpClient httpClient = new DefaultHttpClient();
-			
+			//192.168.1.34
 			ArrayList<String> url = new ArrayList<String>(3);
-			url.add("http://192.168.1.34/moodle/webservice/rest/server.php?");
+			url.add("http://"+host+"/moodle/webservice/rest/server.php?");
 			url.add("wstoken="+token);
 			url.add("&wsfunction="+moodleWebService);
 
@@ -85,7 +87,7 @@ public class CallWebService {
 	{
 		//formamos una url con los valores del arrayList
 		StringBuffer urlCompleta = new StringBuffer();
-		for (Iterator iterator = url.iterator(); iterator.hasNext();) {
+		for (Iterator<String> iterator = url.iterator(); iterator.hasNext();) {
 			urlCompleta.append(iterator.next());			
 		}
 		return urlCompleta.toString();

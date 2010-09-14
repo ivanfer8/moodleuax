@@ -1,12 +1,8 @@
 package uax.android.moodle;
 
-import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
-import java.util.NoSuchElementException;
-import java.util.StringTokenizer;
 
 import org.apache.http.entity.mime.MultipartEntity;
-import org.apache.http.entity.mime.content.StringBody;
 
 import android.app.ListActivity;
 import android.app.ProgressDialog;
@@ -58,6 +54,8 @@ public class Android extends ListActivity {
 	private EditText mTexto = null;
 	private SharedPreferences preferences;
 	private String host = null;
+	
+	private static final int REQST_USEREDIT = 0;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -99,7 +97,7 @@ public class Android extends ListActivity {
 				};
 				Thread thread = new Thread(null, viewOrders, "MagentoBackground");
 				thread.start();
-				m_ProgressDialog = ProgressDialog.show(Android.this, "Please wait...", "Retrieving data ...", true);
+				m_ProgressDialog = ProgressDialog.show(Android.this, "Por favor, espere...", "Buscando usuarios ...", true);
 
 			}
 		});
@@ -115,7 +113,7 @@ public class Android extends ListActivity {
 			public void onClick(View v) {
 				String token = preferences.getString("token", "n/a");
 				String host = preferences.getString("host", "n/a");
-				Toast.makeText(Android.this, "You maintained token: " + token + " host: "+host, Toast.LENGTH_LONG).show();
+				Toast.makeText(Android.this, "Has cambiado token: " + token + " host: "+host, Toast.LENGTH_LONG).show();
 
 			}
 		});
@@ -132,7 +130,7 @@ public class Android extends ListActivity {
 			Intent i = new Intent(Android.this, Preferences.class);
 			startActivity(i);
 			// A toast is a view containing a quick little message for the user.
-			Toast.makeText(Android.this, "Here you can maintain your user credentials.", Toast.LENGTH_LONG).show();
+			Toast.makeText(Android.this, "Aquí puedes cambiar las preferencias de usuario.", Toast.LENGTH_LONG).show();
 			break;
 
 		}
@@ -147,8 +145,14 @@ public class Android extends ListActivity {
 	 */
 	protected void onListItemClick(ListView l, View v, int position, long id) {
 		super.onListItemClick(l, v, position, id);
-		// Get the item that was clicked
-		Toast.makeText(getApplicationContext(), "You have clicked on " + ((User) l.getItemAtPosition(position)).getId(), Toast.LENGTH_SHORT).show();
+		// Lanzamos la nueva actividad y un mensaje con el id seleccionado
+		//
+		Intent i = new Intent();
+		i.setClass(Android.this, UserEdit.class);
+		i.putParcelableArrayListExtra("usuario", this.usuario);
+		//i.putExtra("usuario", (User) l.getItemAtPosition(position));
+		startActivityForResult(i,REQST_USEREDIT);
+		Toast.makeText(getApplicationContext(), "Ha seleccionado " + ((User) l.getItemAtPosition(position)).getId(), Toast.LENGTH_SHORT).show();
 
 	}
 
