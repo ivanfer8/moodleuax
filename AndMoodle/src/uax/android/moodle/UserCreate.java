@@ -7,9 +7,8 @@ import android.app.ProgressDialog;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -17,6 +16,7 @@ import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.io.xml.DomDriver;
 
 import conv.android.moodle.CallWebService;
+import conv.android.moodle.CheckSrcreen;
 import conv.android.moodle.ErrorConverter;
 import conv.android.moodle.ScreenMoodle;
 import fac.android.moodle.ErrorException;
@@ -31,6 +31,7 @@ public class UserCreate extends Activity {
 	private String token;
 	private ErrorException error = new ErrorException();
 	private MultipartEntity entity = new MultipartEntity();
+	private Button mButton = null;
 
 	private String funcion = "moodle_user_create_users";
 
@@ -52,6 +53,8 @@ public class UserCreate extends Activity {
 		preferences = PreferenceManager.getDefaultSharedPreferences(this);
 		this.token = preferences.getString("token", "n/a");
 		this.host = preferences.getString("host", "n/a");
+		
+		mButton = (Button)findViewById(R.id.buttonCrear);
 
 		usuSelecc = UserSingleton.getInstance();
 		
@@ -60,44 +63,33 @@ public class UserCreate extends Activity {
 		etSApellido = (EditText) findViewById(R.id.editPSapellido);
 		etCorreo = (EditText) findViewById(R.id.editCorreo);
 		etPass = (EditText) findViewById(R.id.editPass);
-	}
+		
+		/*
+		 * Pulsamos el boton para crear usuarios
+		 */
+		mButton.setOnClickListener(new View.OnClickListener() {
 
-	/*
-	 * Menu para añadir el token del usuario
-	 * 
-	 * @see android.app.Activity#onCreateOptionsMenu(android.view.Menu)
-	 */
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		MenuInflater inflater = getMenuInflater();
-		inflater.inflate(R.menu.usercreate, menu);
-		return true;
-	}
+			@Override
+			public void onClick(View v) {
 
-	// This method is called once the menu is selected
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		switch (item.getItemId()) {
-		// We have only one menu option
-		case R.id.userCreate:
-			// Lanzamos la edicion de usuarios
-			viewOrders = new Runnable() {
-				@Override
-				public void run() {
-					// aqui la acción
-					recogerDatos();
-					entity = (new ScreenMoodle()).editarUser(entity);
-					userCreate(funcion, entity);
-				}
-			};
-			Thread thread = new Thread(null, viewOrders, "MagentoBackground");
-			thread.start();
-			m_ProgressDialog = ProgressDialog.show(UserCreate.this, "Por favor, espere...", "Creando usuario ...", true);
+				viewOrders = new Runnable() {
+					@Override
+					public void run() {
+						// aqui la acción
+						recogerDatos();
+						entity = (new ScreenMoodle()).crearUser(entity);
+						if((new CheckSrcreen()).checkCreateUser())
+							userCreate(funcion, entity);
+						else
+							mostrarException("Campos no válidos");
+					}
+				};
+				Thread thread = new Thread(null, viewOrders, "MagentoBackground");
+				thread.start();
+				m_ProgressDialog = ProgressDialog.show(UserCreate.this, "Por favor, espere...", "Creando usuario ...", true);
 
-			break;
-
-		}
-		return true;
+			}
+		});
 	}
 
 	/*
@@ -117,7 +109,6 @@ public class UserCreate extends Activity {
 			} catch (Exception e) {
 				// El mensaje de error esta vacio
 				Toast.makeText(UserCreate.this, "Usuario modificado correctamente.", Toast.LENGTH_LONG).show();
-				//m_ProgressDialog.dismiss();
 			}
 			m_ProgressDialog.dismiss();
 		}
@@ -144,11 +135,12 @@ public class UserCreate extends Activity {
 				error = (ErrorException) xstream.fromXML(xml);
 			} else {
 				error.setDescError(xml);
+				mostrarException(error.getDescError());
 			}
 
 		} catch (Exception e) {
 			// Auto-generated catch block
-			error.setDescError(e.getMessage());
+			mostrarException(e.getMessage());
 			// return null;
 		}
 		runOnUiThread(returnRes);
@@ -158,10 +150,19 @@ public class UserCreate extends Activity {
 	 * Recogemos los datos que se muestran por pantalla
 	 */
 	private void recogerDatos() {
-		usuSelecc.setName(etNombre.getText().toString());
-		usuSelecc.setFirstName(etPApellido.getText().toString());
-		usuSelecc.setLastName(etSApellido.getText().toString());
-		usuSelecc.setEmail(etCorreo.getText().toString());
-		usuSelecc.setPass(etPass.getText().toString());
+		try {
+			usuSelecc.setName(etNombre.getText().toString());
+			usuSelecc.setFirstName(etPApellido.getText().toString());
+			usuSelecc.setLastName(etSApellido.getText().toString());
+			usuSelecc.setEmail(etCorreo.getText().toString());
+			usuSelecc.setPass(etPass.getText().toString());
+		} catch (Exception e) {
+			//Auto-generated catch block
+			mostrarException(e.getMessage());
+		}
+	}
+	
+	private void mostrarException(String error){
+		Toast.makeText(UserCreate.this, error, Toast.LENGTH_LONG).show();
 	}
 }

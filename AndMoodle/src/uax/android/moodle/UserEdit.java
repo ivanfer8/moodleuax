@@ -1,16 +1,7 @@
 package uax.android.moodle;
 
-import java.util.ArrayList;
-
 import org.apache.http.entity.mime.MultipartEntity;
 
-import com.thoughtworks.xstream.XStream;
-import com.thoughtworks.xstream.io.xml.DomDriver;
-
-import conv.android.moodle.CallWebService;
-import conv.android.moodle.ErrorConverter;
-import conv.android.moodle.MyUserConverter;
-import conv.android.moodle.ScreenMoodle;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.SharedPreferences;
@@ -21,8 +12,14 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import com.thoughtworks.xstream.XStream;
+import com.thoughtworks.xstream.io.xml.DomDriver;
+
+import conv.android.moodle.CallWebService;
+import conv.android.moodle.ErrorConverter;
+import conv.android.moodle.ScreenMoodle;
 import fac.android.moodle.ErrorException;
-import fac.android.moodle.User;
 import fac.android.moodle.UserSingleton;
 
 public class UserEdit extends Activity {
@@ -175,12 +172,13 @@ public class UserEdit extends Activity {
 				error = (ErrorException) xstream.fromXML(xml);
 			} else {
 				error.setDescError(xml);
+				Toast.makeText(UserEdit.this, error.getDescError(), Toast.LENGTH_LONG).show();
 			}
 
 		} catch (Exception e) {
 			// Auto-generated catch block
 			error.setDescError(e.getMessage());
-			// return null;
+			Toast.makeText(UserEdit.this, error.getDescError(), Toast.LENGTH_LONG).show();
 		}
 		runOnUiThread(returnRes);
 	}
@@ -189,11 +187,16 @@ public class UserEdit extends Activity {
 	 * Recogemos los datos que se muestran por pantalla
 	 */
 	private void recogerDatos() {
-		usuSelecc.setId(etId.getText().toString());
-		usuSelecc.setName(etNombre.getText().toString());
-		usuSelecc.setFirstName(etPApellido.getText().toString());
-		usuSelecc.setLastName(etSApellido.getText().toString());
-		usuSelecc.setEmail(etCorreo.getText().toString());
-		usuSelecc.setCustomFields(etAuth.getText().toString());
+		try {
+			usuSelecc.setId(etId.getText().toString());
+			usuSelecc.setName(etNombre.getText().toString());
+			usuSelecc.setFirstName(etPApellido.getText().toString());
+			usuSelecc.setLastName(etSApellido.getText().toString());
+			usuSelecc.setEmail(etCorreo.getText().toString());
+			usuSelecc.setCustomFields(etAuth.getText().toString());
+		} catch (Exception e) {
+			//Auto-generated catch block
+			Toast.makeText(UserEdit.this, e.getMessage(), Toast.LENGTH_LONG).show();
+		}
 	}
 }
