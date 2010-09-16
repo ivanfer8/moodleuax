@@ -32,7 +32,10 @@
 					android:textColor="#ffffff" />
 				<EditText android:id="@+id/editCorreo" />
 			</TableRow>
-
+			<Button android:text="Crear" android:id="@+id/buttonCrear"
+	android:layout_width="wrap_content" android:layout_height="wrap_content"
+	android:clickable="true" android:layout_gravity="right"
+	android:layout_marginTop="5px"></Button>
 			<View android:layout_height="2dip" android:background="#FF909090" />
 		</TableLayout>
 	</ScrollView>
