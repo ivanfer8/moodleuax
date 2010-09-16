@@ -14,6 +14,7 @@
 
     <activity android:name="Preferences" android:label="Preferencias"></activity>
 	<activity android:name="UserEdit" android:label="Editar usuario"></activity>
+	<activity android:name="UserCreate" android:label="Crear usuario"></activity>
 
 </application>
 
