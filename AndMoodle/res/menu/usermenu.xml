@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+  xmlns:android="http://schemas.android.com/apk/res/android">
+  <item android:id="@+id/userEdit" android:titleCondensed="Editar" android:title="Editar Usuario"></item>
+  <item android:title="Borrar Usuario" android:id="@+id/userDelete" android:titleCondensed="Borrar"></item>
+</menu>

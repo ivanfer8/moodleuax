@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu
   xmlns:android="http://schemas.android.com/apk/res/android">
-<item android:id="@+id/tokenUsu" android:titleCondensed="Token" android:title="Token Usuario"></item>
+<item android:id="@+id/tokenUsu" android:titleCondensed="Preferencias" android:title="Preferencias Usuario"></item>
+<item android:id="@+id/userCreate" android:titleCondensed="Nuevo Usuario" android:title="Crear Usuario"></item>
 </menu>

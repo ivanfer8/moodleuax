@@ -8,30 +8,37 @@
 		android:orientation="horizontal"
 		android:layout_width="fill_parent" 
 		android:layout_height="wrap_content">
+		<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+		android:layout_height="fill_parent" android:layout_width="fill_parent">
+		<View
+        android:layout_height="2dip"
+        android:background="#FF909090" />
+		<TableRow>
 		<TextView 
 			android:id="@+id/label"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content" 
-			android:text="@string/idUsuario" android:gravity="center_horizontal" android:freezesText="true"/>
-			<LinearLayout
-				android:orientation="horizontal"
-				android:layout_width="fill_parent"
-				android:layout_height="fill_parent"
-				android:layout_weight="1">			
-				<EditText 
-					android:id="@+id/paramToken" 
-					android:layout_width="fill_parent"
-			        android:layout_height="wrap_content"
-			        android:background="@android:drawable/editbox_background"
-			        android:layout_below="@id/label"/>
-			</LinearLayout>
-		
-	<ImageButton 
-		android:id="@+id/ok" 
-		android:layout_width="wrap_content" 
-		android:layout_height="wrap_content"
-		android:drawable="@drawable/search">
+			android:text="@string/idUsuario"/>		
+		<EditText 
+			android:id="@+id/paramToken" 
+			android:layout_width="fill_parent"
+	        android:layout_height="wrap_content"
+	        android:background="@android:drawable/editbox_background"
+	        android:layout_below="@id/label"
+	        android:width="240px"/>
+		<ImageButton 
+			android:id="@+id/ok" 
+			android:layout_width="wrap_content" 
+			android:layout_height="wrap_content"
+			android:drawable="@drawable/search">
 	</ImageButton>
+	</TableRow>
+	<View
+        android:layout_height="2dip"
+        android:background="#FF909090" />
+	</TableLayout>
+	
+	
 </LinearLayout>
 	<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
 	   android:orientation="vertical"
