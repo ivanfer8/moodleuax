@@ -37,6 +37,7 @@ import conv.android.moodle.MyUserConverter;
 import conv.android.moodle.ScreenMoodle;
 import fac.android.moodle.ErrorException;
 import fac.android.moodle.User;
+import fac.android.moodle.UserSingleton;
 
 public class Android extends ListActivity {
 
@@ -44,7 +45,6 @@ public class Android extends ListActivity {
 	private ArrayList<User> usuario = null;
 	private OrderAdapter m_adapter;
 	private Runnable viewOrders;
-	private String token;
 	private String funcion = "moodle_user_get_users_by_id";
 	private ErrorException error = new ErrorException();
 	private MultipartEntity entity = new MultipartEntity();
@@ -53,8 +53,9 @@ public class Android extends ListActivity {
 	private Button pButton = null;
 	private EditText mTexto = null;
 	private SharedPreferences preferences;
-	private String host = null;
-	
+	private String token;
+	private String host;
+
 	private static final int REQST_USEREDIT = 0;
 
 	@Override
@@ -91,8 +92,9 @@ public class Android extends ListActivity {
 					@Override
 					public void run() {
 						usuario = new ArrayList<User>();
-						entity = (new ScreenMoodle()).recogerId(mTexto,entity);
-						listUserById(token, funcion, entity);
+						usuario.removeAll(usuario);
+						entity = (new ScreenMoodle()).recogerId(mTexto, entity);
+						listUserById(funcion, entity);
 					}
 				};
 				Thread thread = new Thread(null, viewOrders, "MagentoBackground");
@@ -113,7 +115,7 @@ public class Android extends ListActivity {
 			public void onClick(View v) {
 				String token = preferences.getString("token", "n/a");
 				String host = preferences.getString("host", "n/a");
-				Toast.makeText(Android.this, "Has cambiado token: " + token + " host: "+host, Toast.LENGTH_LONG).show();
+				Toast.makeText(Android.this, "Has cambiado token: " + token + " host: " + host, Toast.LENGTH_LONG).show();
 
 			}
 		});
@@ -123,14 +125,23 @@ public class Android extends ListActivity {
 	// This method is called once the menu is selected
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
+		Intent i = null;
 		switch (item.getItemId()) {
 		// We have only one menu option
 		case R.id.tokenUsu:
 			// Launch Preference activity
-			Intent i = new Intent(Android.this, Preferences.class);
+			i = new Intent(Android.this, Preferences.class);
 			startActivity(i);
 			// A toast is a view containing a quick little message for the user.
 			Toast.makeText(Android.this, "Aquí puedes cambiar las preferencias de usuario.", Toast.LENGTH_LONG).show();
+			break;
+			
+		case R.id.userCreate:
+			// Launch Preference activity
+			i = new Intent(Android.this, UserCreate.class);
+			startActivity(i);
+			// A toast is a view containing a quick little message for the user.
+			Toast.makeText(Android.this, "Aquí puedes crear nuevos usuarios.", Toast.LENGTH_LONG).show();
 			break;
 
 		}
@@ -146,12 +157,27 @@ public class Android extends ListActivity {
 	protected void onListItemClick(ListView l, View v, int position, long id) {
 		super.onListItemClick(l, v, position, id);
 		// Lanzamos la nueva actividad y un mensaje con el id seleccionado
-		//
+		UserSingleton usuSelecc = UserSingleton.getInstance();
+		usuSelecc.setId(usuario.get(position).getId());
+		usuSelecc.setName(usuario.get(position).getName());
+		usuSelecc.setFirstName(usuario.get(position).getFirstName());
+		usuSelecc.setLastName(usuario.get(position).getLastName());
+		usuSelecc.setEmail(usuario.get(position).getEmail());
+		usuSelecc.setAuth(usuario.get(position).getAuth());
+		usuSelecc.setConfirmed(usuario.get(position).getConfirmed());
+		usuSelecc.setIdNumber(usuario.get(position).getIdNumber());
+		usuSelecc.setEmailStop(usuario.get(position).getEmailStop());
+		usuSelecc.setLang(usuario.get(position).getLang());
+		usuSelecc.setTheme(usuario.get(position).getTheme());
+		usuSelecc.setTimeZone(usuario.get(position).getTimeZone());
+		usuSelecc.setMailFormat(usuario.get(position).getMailFormat());
+		usuSelecc.setDescription(usuario.get(position).getDescription());
+		usuSelecc.setCity(usuario.get(position).getCity());
+		usuSelecc.setCountry(usuario.get(position).getCountry());
+		usuSelecc.setCustomFields(usuario.get(position).getCustomFields());
 		Intent i = new Intent();
 		i.setClass(Android.this, UserEdit.class);
-		i.putParcelableArrayListExtra("usuario", this.usuario);
-		//i.putExtra("usuario", (User) l.getItemAtPosition(position));
-		startActivityForResult(i,REQST_USEREDIT);
+		startActivityForResult(i, REQST_USEREDIT);
 		Toast.makeText(getApplicationContext(), "Ha seleccionado " + ((User) l.getItemAtPosition(position)).getId(), Toast.LENGTH_SHORT).show();
 
 	}
@@ -176,6 +202,7 @@ public class Android extends ListActivity {
 		@Override
 		public void run() {
 			if (usuario != null && usuario.size() > 0) {
+				m_adapter.clear();
 				m_adapter.notifyDataSetChanged();
 				for (int i = 0; i < usuario.size(); i++)
 					m_adapter.add(usuario.get(i));
@@ -189,11 +216,11 @@ public class Android extends ListActivity {
 	 * Lanzar web service con las opciones elegidas
 	 */
 	@SuppressWarnings("unchecked")
-	private void listUserById(String token, String moodleWebService, MultipartEntity entity) {
+	private void listUserById(String moodleWebService, MultipartEntity entity) {
 		// WebService list_user_By_Id
 		try {
 
-			CallWebService cws = new CallWebService(token, moodleWebService,host, entity);
+			CallWebService cws = new CallWebService(this.token, moodleWebService, this.host, entity);
 
 			String xml = cws.Consume();
 			CharSequence exception = "EXCEPTION";

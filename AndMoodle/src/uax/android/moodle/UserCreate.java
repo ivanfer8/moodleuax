@@ -1,16 +1,7 @@
 package uax.android.moodle;
 
-import java.util.ArrayList;
-
 import org.apache.http.entity.mime.MultipartEntity;
 
-import com.thoughtworks.xstream.XStream;
-import com.thoughtworks.xstream.io.xml.DomDriver;
-
-import conv.android.moodle.CallWebService;
-import conv.android.moodle.ErrorConverter;
-import conv.android.moodle.MyUserConverter;
-import conv.android.moodle.ScreenMoodle;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.SharedPreferences;
@@ -21,11 +12,17 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import com.thoughtworks.xstream.XStream;
+import com.thoughtworks.xstream.io.xml.DomDriver;
+
+import conv.android.moodle.CallWebService;
+import conv.android.moodle.ErrorConverter;
+import conv.android.moodle.ScreenMoodle;
 import fac.android.moodle.ErrorException;
-import fac.android.moodle.User;
 import fac.android.moodle.UserSingleton;
 
-public class UserEdit extends Activity {
+public class UserCreate extends Activity {
 
 	private ProgressDialog m_ProgressDialog = null;
 	private Runnable viewOrders;
@@ -35,25 +32,21 @@ public class UserEdit extends Activity {
 	private ErrorException error = new ErrorException();
 	private MultipartEntity entity = new MultipartEntity();
 
-	private String funcion = "moodle_user_update_users";
+	private String funcion = "moodle_user_create_users";
 
 	private UserSingleton usuSelecc;
-	private EditText etId = null;
 	private EditText etNombre = null;
 	private EditText etPApellido = null;
 	private EditText etSApellido = null;
 	private EditText etCorreo = null;
-	private EditText etAuth = null;
-	private EditText etLang = null;
-	private EditText etDesc = null;
-	private EditText etCity = null;
-	private EditText etCountry = null;
+	private EditText etPass = null;
 
+	
 	/** Called when the activity is first created. */
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.useredit);
+		setContentView(R.layout.usercreate);
 
 		// Inicializamos las preferencias, el token del usuario
 		preferences = PreferenceManager.getDefaultSharedPreferences(this);
@@ -61,36 +54,12 @@ public class UserEdit extends Activity {
 		this.host = preferences.getString("host", "n/a");
 
 		usuSelecc = UserSingleton.getInstance();
-		// Id
-		etId = (EditText) findViewById(R.id.editId);
-		etId.setText(usuSelecc.getId());
-		// Nombre
+		
 		etNombre = (EditText) findViewById(R.id.editNombre);
-		etNombre.setText(usuSelecc.getName());
-		// Primer apellido
 		etPApellido = (EditText) findViewById(R.id.editPApellido);
-		etPApellido.setText(usuSelecc.getFirstName());
-		// Segundo apellido
 		etSApellido = (EditText) findViewById(R.id.editPSapellido);
-		etSApellido.setText(usuSelecc.getLastName());
-		// Correo electronico
 		etCorreo = (EditText) findViewById(R.id.editCorreo);
-		etCorreo.setText(usuSelecc.getEmail());
-		// Autorizacion
-		etAuth = (EditText) findViewById(R.id.editAuth);
-		etAuth.setText(usuSelecc.getAuth());
-		// Lenguaje
-		etLang = (EditText) findViewById(R.id.editLang);
-		etLang.setText(usuSelecc.getLang());
-		// Descripcion
-		etDesc = (EditText) findViewById(R.id.editDesc);
-		etDesc.setText(usuSelecc.getDescription());
-		// Ciudad
-		etCity = (EditText) findViewById(R.id.editCity);
-		etCity.setText(usuSelecc.getCity());
-		// País
-		etCountry = (EditText) findViewById(R.id.editCountry);
-		etCountry.setText(usuSelecc.getCountry());
+		etPass = (EditText) findViewById(R.id.editPass);
 	}
 
 	/*
@@ -101,7 +70,7 @@ public class UserEdit extends Activity {
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		MenuInflater inflater = getMenuInflater();
-		inflater.inflate(R.menu.usermenu, menu);
+		inflater.inflate(R.menu.usercreate, menu);
 		return true;
 	}
 
@@ -110,7 +79,7 @@ public class UserEdit extends Activity {
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
 		// We have only one menu option
-		case R.id.userEdit:
+		case R.id.userCreate:
 			// Lanzamos la edicion de usuarios
 			viewOrders = new Runnable() {
 				@Override
@@ -118,12 +87,12 @@ public class UserEdit extends Activity {
 					// aqui la acción
 					recogerDatos();
 					entity = (new ScreenMoodle()).editarUser(entity);
-					userUpdate(funcion, entity);
+					userCreate(funcion, entity);
 				}
 			};
 			Thread thread = new Thread(null, viewOrders, "MagentoBackground");
 			thread.start();
-			m_ProgressDialog = ProgressDialog.show(UserEdit.this, "Por favor, espere...", "Modificando usuarios ...", true);
+			m_ProgressDialog = ProgressDialog.show(UserCreate.this, "Por favor, espere...", "Creando usuario ...", true);
 
 			break;
 
@@ -141,13 +110,13 @@ public class UserEdit extends Activity {
 			try {
 				if (error.getDescError().length() > 0) {
 					// Se ha producido un error
-					Toast.makeText(UserEdit.this, "Se ha producido un error.", Toast.LENGTH_LONG).show();
+					Toast.makeText(UserCreate.this, "Se ha producido un error.", Toast.LENGTH_LONG).show();
 				} else {
-					Toast.makeText(UserEdit.this, "Usuario modificado correctamente.", Toast.LENGTH_LONG).show();
+					Toast.makeText(UserCreate.this, "Usuario modificado correctamente.", Toast.LENGTH_LONG).show();
 				}
 			} catch (Exception e) {
 				// El mensaje de error esta vacio
-				Toast.makeText(UserEdit.this, "Usuario modificado correctamente.", Toast.LENGTH_LONG).show();
+				Toast.makeText(UserCreate.this, "Usuario modificado correctamente.", Toast.LENGTH_LONG).show();
 				//m_ProgressDialog.dismiss();
 			}
 			m_ProgressDialog.dismiss();
@@ -155,7 +124,7 @@ public class UserEdit extends Activity {
 	};
 
 	// lanzamos el evento para editar los usuarios
-	private void userUpdate(String moodleWebService, MultipartEntity entity) {
+	private void userCreate(String moodleWebService, MultipartEntity entity) {
 		// WebService list_user_By_Id
 		try {
 
@@ -189,11 +158,10 @@ public class UserEdit extends Activity {
 	 * Recogemos los datos que se muestran por pantalla
 	 */
 	private void recogerDatos() {
-		usuSelecc.setId(etId.getText().toString());
 		usuSelecc.setName(etNombre.getText().toString());
 		usuSelecc.setFirstName(etPApellido.getText().toString());
 		usuSelecc.setLastName(etSApellido.getText().toString());
 		usuSelecc.setEmail(etCorreo.getText().toString());
-		usuSelecc.setCustomFields(etAuth.getText().toString());
+		usuSelecc.setPass(etPass.getText().toString());
 	}
 }
