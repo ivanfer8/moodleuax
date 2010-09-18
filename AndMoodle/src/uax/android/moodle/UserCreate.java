@@ -4,6 +4,7 @@ import org.apache.http.entity.mime.MultipartEntity;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -42,7 +43,6 @@ public class UserCreate extends Activity {
 	private EditText etCorreo = null;
 	private EditText etPass = null;
 
-	
 	/** Called when the activity is first created. */
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -53,17 +53,17 @@ public class UserCreate extends Activity {
 		preferences = PreferenceManager.getDefaultSharedPreferences(this);
 		this.token = preferences.getString("token", "n/a");
 		this.host = preferences.getString("host", "n/a");
-		
-		mButton = (Button)findViewById(R.id.buttonCrear);
+
+		mButton = (Button) findViewById(R.id.buttonCrear);
 
 		usuSelecc = UserSingleton.getInstance();
-		
+
 		etNombre = (EditText) findViewById(R.id.editNombre);
 		etPApellido = (EditText) findViewById(R.id.editPApellido);
 		etSApellido = (EditText) findViewById(R.id.editPSapellido);
 		etCorreo = (EditText) findViewById(R.id.editCorreo);
 		etPass = (EditText) findViewById(R.id.editPass);
-		
+
 		/*
 		 * Pulsamos el boton para crear usuarios
 		 */
@@ -78,10 +78,14 @@ public class UserCreate extends Activity {
 						// aqui la acción
 						recogerDatos();
 						entity = (new ScreenMoodle()).crearUser(entity);
-						if((new CheckSrcreen()).checkCreateUser())
+						if ((new CheckSrcreen()).checkCreateUser()) {
+							//datos correctos
 							userCreate(funcion, entity);
-						else
-							mostrarException("Campos no válidos");
+						} else {
+							//datos incorrectos
+							error.setDescError("Error en los datos de entrada");
+							runOnUiThread(returnRes);
+						}
 					}
 				};
 				Thread thread = new Thread(null, viewOrders, "MagentoBackground");
@@ -102,13 +106,13 @@ public class UserCreate extends Activity {
 			try {
 				if (error.getDescError().length() > 0) {
 					// Se ha producido un error
-					Toast.makeText(UserCreate.this, "Se ha producido un error.", Toast.LENGTH_LONG).show();
+					Toast.makeText(UserCreate.this, "Se ha producido un error.\n"+error.getDescError(), Toast.LENGTH_LONG).show();
 				} else {
-					Toast.makeText(UserCreate.this, "Usuario modificado correctamente.", Toast.LENGTH_LONG).show();
+					Toast.makeText(UserCreate.this, "Usuario creado correctamente.", Toast.LENGTH_LONG).show();
 				}
 			} catch (Exception e) {
 				// El mensaje de error esta vacio
-				Toast.makeText(UserCreate.this, "Usuario modificado correctamente.", Toast.LENGTH_LONG).show();
+				Toast.makeText(UserCreate.this, "Usuario creado correctamente.", Toast.LENGTH_LONG).show();
 			}
 			m_ProgressDialog.dismiss();
 		}
@@ -127,15 +131,15 @@ public class UserCreate extends Activity {
 			// comprobamos que no haya un error
 			if (!xml.substring(0, 4).equals("ERROR") && !xml.contains(exception)) {
 				// no hay error
-
+				Toast.makeText(UserCreate.this, "Usuario creado con éxito!", Toast.LENGTH_LONG).show();
+				startActivity(new Intent(UserCreate.this, UserMenu.class));
 			} else if (xml.contains(exception)) {
 				XStream xstream = new XStream(new DomDriver());
 				xstream.registerConverter(new ErrorConverter());
 				xstream.alias("EXCEPTION", ErrorException.class);
 				error = (ErrorException) xstream.fromXML(xml);
 			} else {
-				error.setDescError(xml);
-				mostrarException(error.getDescError());
+				mostrarException(xml);
 			}
 
 		} catch (Exception e) {
@@ -157,12 +161,13 @@ public class UserCreate extends Activity {
 			usuSelecc.setEmail(etCorreo.getText().toString());
 			usuSelecc.setPass(etPass.getText().toString());
 		} catch (Exception e) {
-			//Auto-generated catch block
+			// Auto-generated catch block
 			mostrarException(e.getMessage());
 		}
 	}
-	
-	private void mostrarException(String error){
-		Toast.makeText(UserCreate.this, error, Toast.LENGTH_LONG).show();
+
+	private void mostrarException(String descError) {
+		this.error.setDescError(descError);
+		runOnUiThread(returnRes);
 	}
 }

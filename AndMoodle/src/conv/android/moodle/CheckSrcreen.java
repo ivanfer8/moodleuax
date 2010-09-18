@@ -20,12 +20,34 @@ public class CheckSrcreen {
 	public boolean checkCreateUser() {
 		this.usuSelecc = UserSingleton.getInstance();
 		// comprobar datos vacios
-		if (checkEmpty() && checkCorreo(usuSelecc.getEmail()) && comprobarLogitudes()) {
+		if (checkEmptyCreate() && checkCorreo(usuSelecc.getEmail()) && comprobarLogitudes()) {
 			return true;
 		} else {
 			return false;
 		}
 
+	}
+	
+	/*
+	 * Comprobamos que los campos para editar usuarios son correctos
+	 */
+	public boolean checkEditUser(){
+		this.usuSelecc = UserSingleton.getInstance();
+		//comprobar datos vacios o incorrectos
+		if(checkEmptyEdit() && checkCorreo(usuSelecc.getEmail())){
+			return true;
+		}else{
+			return false;
+		}
+	}
+	
+	private boolean checkEmptyEdit(){
+		//los campos para comprobar que estan vacios son el correo, el nombre y los apellidos
+		if(usuSelecc.getName().length()<=0 && usuSelecc.getEmail().length()<=0 && usuSelecc.getFirstName().length()<=0 && usuSelecc.getLastName().length()<=0){
+			return false;
+		}else{
+			return true;
+		}
 	}
 
 	private boolean comprobarLogitudes() {
@@ -43,7 +65,7 @@ public class CheckSrcreen {
 		}
 	}
 
-	private boolean checkEmpty() {
+	private boolean checkEmptyCreate() {
 		// Comprobamos que los campos nombre, apellidos, correo y passwor
 		// no esten vacios
 		try {

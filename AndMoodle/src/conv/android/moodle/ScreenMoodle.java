@@ -62,13 +62,28 @@ public class ScreenMoodle {
 	}
 
 	/*
-	 * Modificar usuarios Cogemos el objeto que se muestra en pantalla y lo
-	 * convertimos en parametros de entrada
+	 * Eliminar usuarios. Cogemos el id que hemos seleccionado para eliminarlo
 	 */
-	public MultipartEntity editarUser(MultipartEntity entity){
+	public MultipartEntity deleteUser(MultipartEntity entity) {
 		try {
 			UserSingleton usuario = UserSingleton.getInstance();
 			
+			entity.addPart("userids[0]", new StringBody(usuario.getId()));
+		} catch (UnsupportedEncodingException e) {
+			// Auto-generated catch block
+			e.printStackTrace();
+		}
+		return entity;
+	}
+
+	/*
+	 * Modificar usuarios Cogemos el objeto que se muestra en pantalla y lo
+	 * convertimos en parametros de entrada
+	 */
+	public MultipartEntity editarUser(MultipartEntity entity) {
+		try {
+			UserSingleton usuario = UserSingleton.getInstance();
+
 			entity.addPart("users[0][id]", new StringBody(usuario.getId()));
 			entity.addPart("users[0][username]", new StringBody(usuario.getName()));
 			entity.addPart("users[0][password]", new StringBody("Moodle2010#"));
@@ -83,18 +98,18 @@ public class ScreenMoodle {
 		} catch (NoSuchElementException e) {
 			e.printStackTrace();
 		}
-		
+
 		return entity;
 	}
-	
+
 	/*
 	 * Crear usuarios Cogemos el objeto que se muestra en pantalla y lo
 	 * convertimos en parametros de entrada
 	 */
-	public MultipartEntity crearUser(MultipartEntity entity){
+	public MultipartEntity crearUser(MultipartEntity entity) {
 		try {
 			UserSingleton usuario = UserSingleton.getInstance();
-			
+
 			entity.addPart("users[0][username]", new StringBody(usuario.getName()));
 			entity.addPart("users[0][password]", new StringBody(usuario.getPass()));
 			entity.addPart("users[0][firstname]", new StringBody(usuario.getFirstName()));
@@ -110,7 +125,7 @@ public class ScreenMoodle {
 		} catch (NoSuchElementException e) {
 			e.printStackTrace();
 		}
-		
+
 		return entity;
 	}
 }

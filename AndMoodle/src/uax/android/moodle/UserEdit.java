@@ -3,7 +3,10 @@ package uax.android.moodle;
 import org.apache.http.entity.mime.MultipartEntity;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -17,6 +20,7 @@ import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.io.xml.DomDriver;
 
 import conv.android.moodle.CallWebService;
+import conv.android.moodle.CheckSrcreen;
 import conv.android.moodle.ErrorConverter;
 import conv.android.moodle.ScreenMoodle;
 import fac.android.moodle.ErrorException;
@@ -32,7 +36,8 @@ public class UserEdit extends Activity {
 	private ErrorException error = new ErrorException();
 	private MultipartEntity entity = new MultipartEntity();
 
-	private String funcion = "moodle_user_update_users";
+	private String funcionEdit = "moodle_user_update_users";
+	private String funcionDelete = "moodle_user_delete_users";
 
 	private UserSingleton usuSelecc;
 	private EditText etId = null;
@@ -105,6 +110,7 @@ public class UserEdit extends Activity {
 	// This method is called once the menu is selected
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
+		;
 		switch (item.getItemId()) {
 		// We have only one menu option
 		case R.id.userEdit:
@@ -115,13 +121,45 @@ public class UserEdit extends Activity {
 					// aqui la acción
 					recogerDatos();
 					entity = (new ScreenMoodle()).editarUser(entity);
-					userUpdate(funcion, entity);
+					if ((new CheckSrcreen()).checkEditUser()) {
+						userUpdate(funcionEdit, entity);
+					} else {
+						// datos incorrectos
+						mostrarException("Error en los datos de entrada");
+					}
 				}
 			};
 			Thread thread = new Thread(null, viewOrders, "MagentoBackground");
 			thread.start();
-			m_ProgressDialog = ProgressDialog.show(UserEdit.this, "Por favor, espere...", "Modificando usuarios ...", true);
+			m_ProgressDialog = ProgressDialog.show(UserEdit.this, "Por favor, espere...", "Modificando usuario ...", true);
 
+			break;
+
+		case R.id.userDelete:
+			// lanzamos eliminar usuario
+			AlertDialog alertDialog = new AlertDialog.Builder(this).create();
+			alertDialog.setTitle("Elimiar...");
+			alertDialog.setMessage("¿Estás seguro?");
+			alertDialog.setButton("Si", new DialogInterface.OnClickListener() {
+				public void onClick(DialogInterface dialog, int which) {
+					// here you can add functions
+					// procedemos a elimiar el usuario
+					viewOrders = new Runnable() {
+						@Override
+						public void run() {
+							// aqui la acción
+							recogerDatos();
+							entity = (new ScreenMoodle()).deleteUser(entity);
+							userDelete(funcionDelete, entity);
+						}
+					};
+					Thread thread = new Thread(null, viewOrders, "MagentoBackground");
+					thread.start();
+					m_ProgressDialog = ProgressDialog.show(UserEdit.this, "Por favor, espere...", "Eliminando usuario ...", true);
+				}
+			});
+			alertDialog.setIcon(R.drawable.icon);
+			alertDialog.show();
 			break;
 
 		}
@@ -144,8 +182,8 @@ public class UserEdit extends Activity {
 				}
 			} catch (Exception e) {
 				// El mensaje de error esta vacio
-				Toast.makeText(UserEdit.this, "Usuario modificado correctamente.", Toast.LENGTH_LONG).show();
-				//m_ProgressDialog.dismiss();
+				Toast.makeText(UserEdit.this, "Acción realizada correctamente.", Toast.LENGTH_LONG).show();
+				// m_ProgressDialog.dismiss();
 			}
 			m_ProgressDialog.dismiss();
 		}
@@ -164,7 +202,8 @@ public class UserEdit extends Activity {
 			// comprobamos que no haya un error
 			if (!xml.substring(0, 4).equals("ERROR") && !xml.contains(exception)) {
 				// no hay error
-
+				Toast.makeText(UserEdit.this, "Usuario eliminado con éxito!", Toast.LENGTH_LONG).show();
+				startActivity(new Intent(UserEdit.this, UserMenu.class));
 			} else if (xml.contains(exception)) {
 				XStream xstream = new XStream(new DomDriver());
 				xstream.registerConverter(new ErrorConverter());
@@ -177,8 +216,37 @@ public class UserEdit extends Activity {
 
 		} catch (Exception e) {
 			// Auto-generated catch block
-			error.setDescError(e.getMessage());
-			Toast.makeText(UserEdit.this, error.getDescError(), Toast.LENGTH_LONG).show();
+			mostrarException(e.getMessage());
+		}
+		runOnUiThread(returnRes);
+	}
+
+	// lanzamos el evento para eliminar los usuarios
+	private void userDelete(String moodleWebService, MultipartEntity entity) {
+		// WebService list_user_By_Id
+		try {
+
+			CallWebService cws = new CallWebService(this.token, moodleWebService, this.host, entity);
+
+			String xml = cws.Consume();
+			CharSequence exception = "EXCEPTION";
+
+			// comprobamos que no haya un error
+			if (!xml.substring(0, 4).equals("ERROR") && !xml.contains(exception)) {
+				// no hay error
+				finish();
+			} else if (xml.contains(exception)) {
+				XStream xstream = new XStream(new DomDriver());
+				xstream.registerConverter(new ErrorConverter());
+				xstream.alias("EXCEPTION", ErrorException.class);
+				error = (ErrorException) xstream.fromXML(xml);
+			} else {
+				mostrarException("Error eliminado usuario");
+			}
+
+		} catch (Exception e) {
+			// Auto-generated catch block
+			mostrarException(e.getMessage());
 		}
 		runOnUiThread(returnRes);
 	}
@@ -195,8 +263,13 @@ public class UserEdit extends Activity {
 			usuSelecc.setEmail(etCorreo.getText().toString());
 			usuSelecc.setCustomFields(etAuth.getText().toString());
 		} catch (Exception e) {
-			//Auto-generated catch block
-			Toast.makeText(UserEdit.this, e.getMessage(), Toast.LENGTH_LONG).show();
+			// Auto-generated catch block
+			mostrarException(e.getMessage());
 		}
+	}
+	
+	private void mostrarException(String descError) {
+		this.error.setDescError(descError);
+		runOnUiThread(returnRes);
 	}
 }

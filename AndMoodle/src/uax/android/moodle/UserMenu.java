@@ -17,11 +17,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.Window;
-import android.view.WindowManager;
-import android.view.View.OnClickListener;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ListView;
@@ -39,7 +35,7 @@ import fac.android.moodle.ErrorException;
 import fac.android.moodle.User;
 import fac.android.moodle.UserSingleton;
 
-public class Android extends ListActivity {
+public class UserMenu extends ListActivity {
 
 	private ProgressDialog m_ProgressDialog = null;
 	private ArrayList<User> usuario = null;
@@ -50,7 +46,6 @@ public class Android extends ListActivity {
 	private MultipartEntity entity = new MultipartEntity();
 
 	private ImageButton mBuscar = null;
-	private Button pButton = null;
 	private EditText mTexto = null;
 	private SharedPreferences preferences;
 	private String token;
@@ -61,9 +56,6 @@ public class Android extends ListActivity {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		// quitar barra superior
-		requestWindowFeature(Window.FEATURE_NO_TITLE);
-		this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
 		setContentView(R.layout.main);
 		usuario = new ArrayList<User>();
@@ -97,29 +89,18 @@ public class Android extends ListActivity {
 						listUserById(funcion, entity);
 					}
 				};
-				Thread thread = new Thread(null, viewOrders, "MagentoBackground");
-				thread.start();
-				m_ProgressDialog = ProgressDialog.show(Android.this, "Por favor, espere...", "Buscando usuarios ...", true);
+				try {
+					Thread thread = new Thread(null, viewOrders, "MagentoBackground");
+					thread.start();
+					m_adapter.clear();
+					m_ProgressDialog = ProgressDialog.show(UserMenu.this, "Por favor, espere...", "Buscando usuarios ...", true);
+				} catch (Exception e) {
+					// Auto-generated catch block
+					mostrarException(e.getMessage());
+				}
 
 			}
 		});
-
-		/*
-		 * Pulsamos las preferencias para cambiar el token
-		 */
-
-		pButton = (Button) findViewById(R.id.Button01);
-		this.pButton.setOnClickListener(new OnClickListener() {
-
-			@Override
-			public void onClick(View v) {
-				String token = preferences.getString("token", "n/a");
-				String host = preferences.getString("host", "n/a");
-				Toast.makeText(Android.this, "Has cambiado token: " + token + " host: " + host, Toast.LENGTH_LONG).show();
-
-			}
-		});
-
 	}
 
 	// This method is called once the menu is selected
@@ -130,18 +111,18 @@ public class Android extends ListActivity {
 		// We have only one menu option
 		case R.id.tokenUsu:
 			// Launch Preference activity
-			i = new Intent(Android.this, Preferences.class);
+			i = new Intent(UserMenu.this, Preferences.class);
 			startActivity(i);
 			// A toast is a view containing a quick little message for the user.
-			Toast.makeText(Android.this, "Aquí puedes cambiar las preferencias de usuario.", Toast.LENGTH_LONG).show();
+			Toast.makeText(UserMenu.this, "Aquí puedes cambiar las preferencias de usuario.", Toast.LENGTH_LONG).show();
 			break;
 			
 		case R.id.userCreate:
 			// Launch Preference activity
-			i = new Intent(Android.this, UserCreate.class);
+			i = new Intent(UserMenu.this, UserCreate.class);
 			startActivity(i);
 			// A toast is a view containing a quick little message for the user.
-			Toast.makeText(Android.this, "Aquí puedes crear nuevos usuarios.", Toast.LENGTH_LONG).show();
+			Toast.makeText(UserMenu.this, "Aquí puedes crear nuevos usuarios.", Toast.LENGTH_LONG).show();
 			break;
 
 		}
@@ -176,9 +157,9 @@ public class Android extends ListActivity {
 		usuSelecc.setCountry(usuario.get(position).getCountry());
 		usuSelecc.setCustomFields(usuario.get(position).getCustomFields());
 		Intent i = new Intent();
-		i.setClass(Android.this, UserEdit.class);
+		i.setClass(UserMenu.this, UserEdit.class);
 		startActivityForResult(i, REQST_USEREDIT);
-		Toast.makeText(getApplicationContext(), "Ha seleccionado " + ((User) l.getItemAtPosition(position)).getId(), Toast.LENGTH_SHORT).show();
+		Toast.makeText(getApplicationContext(), "Ha seleccionado " + ((User) l.getItemAtPosition(position)).getName(), Toast.LENGTH_SHORT).show();
 
 	}
 
@@ -202,7 +183,6 @@ public class Android extends ListActivity {
 		@Override
 		public void run() {
 			if (usuario != null && usuario.size() > 0) {
-				m_adapter.clear();
 				m_adapter.notifyDataSetChanged();
 				for (int i = 0; i < usuario.size(); i++)
 					m_adapter.add(usuario.get(i));
@@ -238,14 +218,14 @@ public class Android extends ListActivity {
 				xstream.alias("EXCEPTION", ErrorException.class);
 				error = (ErrorException) xstream.fromXML(xml);
 			} else {
-				error.setDescError(xml);
+				mostrarException("Se ha producido una excepción.");
 			}
 
 			// return listUser;
 
 		} catch (Exception e) {
 			// Auto-generated catch block
-			error.setDescError(e.getMessage());
+			mostrarException(e.getMessage());
 			// return null;
 		}
 		runOnUiThread(returnRes);
@@ -283,6 +263,11 @@ public class Android extends ListActivity {
 			}
 			return v;
 		}
+	}
+	
+	private void mostrarException(String descError) {
+		this.error.setDescError(descError);
+		runOnUiThread(returnRes);
 	}
 
 }
