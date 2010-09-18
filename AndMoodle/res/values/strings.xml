@@ -4,12 +4,13 @@
 
 	<string name="interfaz">Interfaz</string>
 
-	<string name="idUsuario">Usarios:</string>
+	<string name="idUsuario">IDs Usuarios:</string>
+	<string name="listaUsu">Listado de usuarios:</string>
 
 	<string name="cantidad">Cantidad</string>
 
 	<string name="buscar">Buscar</string>
 	<string name="nombre">Nombre:</string>	
 	
-	<string name="no_items">No orders to display</string>
+	<string name="no_items">No hay usuarios para mostrar</string>
 </resources>

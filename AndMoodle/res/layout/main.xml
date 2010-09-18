@@ -1,64 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<LinearLayout android:id="@+id/LinearLayout"
 	xmlns:android="http://schemas.android.com/apk/res/android"
-	android:orientation="vertical" 
-	android:layout_width="fill_parent"
+	android:orientation="vertical" android:layout_width="fill_parent"
 	android:layout_height="fill_parent">
-	<LinearLayout 
-		android:orientation="horizontal"
-		android:layout_width="fill_parent" 
-		android:layout_height="wrap_content">
+	<LinearLayout android:id="@+id/LinearLayout02"
+		android:layout_height="50px" android:layout_width="fill_parent"
+		android:clickable="true" android:background="@drawable/logo" />
+	<LinearLayout android:orientation="horizontal"
+		android:layout_width="fill_parent" android:layout_height="wrap_content">
 		<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
-		android:layout_height="fill_parent" android:layout_width="fill_parent">
-		<View
-        android:layout_height="2dip"
-        android:background="#FF909090" />
-		<TableRow>
-		<TextView 
-			android:id="@+id/label"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content" 
-			android:text="@string/idUsuario"/>		
-		<EditText 
-			android:id="@+id/paramToken" 
-			android:layout_width="fill_parent"
-	        android:layout_height="wrap_content"
-	        android:background="@android:drawable/editbox_background"
-	        android:layout_below="@id/label"
-	        android:width="240px"/>
-		<ImageButton 
-			android:id="@+id/ok" 
-			android:layout_width="wrap_content" 
-			android:layout_height="wrap_content"
-			android:drawable="@drawable/search">
-	</ImageButton>
-	</TableRow>
-	<View
-        android:layout_height="2dip"
-        android:background="#FF909090" />
-	</TableLayout>
-	
-	
-</LinearLayout>
-	<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-	   android:orientation="vertical"
-	   android:layout_width="fill_parent"
-	   android:layout_height="fill_parent"
-	   >
-		<ListView
-		    android:id="@+id/android:list"
-		    android:layout_width="fill_parent"
-		    android:layout_height="fill_parent"
-		    />
-		<TextView
-		    android:id="@+id/android:empty"
-		    android:layout_width="fill_parent"
-		    android:layout_height="fill_parent"
-		    android:text="@string/no_items"/>
+			android:layout_height="fill_parent" android:layout_width="fill_parent">
+			<View android:layout_height="2dip" android:background="#FF909090" />
+			<TableRow>
+				<TextView android:id="@+id/label" android:layout_width="wrap_content"
+					android:layout_height="wrap_content" android:text="@string/idUsuario" />
+			</TableRow>
+			<TableRow>
+				<EditText android:id="@+id/paramToken"
+					android:layout_height="wrap_content" android:layout_x="12px"
+					android:layout_y="12px" android:layout_width="260px" />
+				<ImageButton android:id="@+id/ok" android:layout_height="wrap_content"
+					android:layout_x="220px" android:layout_y="12px" android:src="@drawable/search"
+					android:clickable="true">
+				</ImageButton>
+			</TableRow>
+			<View android:layout_height="2dip" android:background="#FF909090" />
+		</TableLayout>
+
+
 	</LinearLayout>
-	<Button 
-		android:id="@+id/Button01" 
-		android:layout_width="wrap_content" 
-		android:layout_height="wrap_content">
-	</Button>
+	<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+		android:orientation="vertical" android:layout_width="fill_parent"
+		android:layout_height="fill_parent">
+		<TextView android:id="@+id/label" android:layout_width="wrap_content"
+			android:layout_height="wrap_content" android:text="@string/listaUsu" />
+		<ListView android:id="@+id/android:list"
+			android:layout_width="fill_parent" android:layout_height="fill_parent" />
+		<TextView android:id="@+id/android:empty"
+			android:layout_width="fill_parent" android:layout_height="fill_parent"
+			android:text="@string/no_items" />
+	</LinearLayout>
 </LinearLayout>

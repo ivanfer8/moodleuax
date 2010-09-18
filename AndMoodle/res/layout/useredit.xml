@@ -8,7 +8,7 @@
 		<TableRow>
 			<TextView android:id="@+id/textId" android:text="Id usuario:"
 				android:textColor="#ffffff" />
-			<EditText android:id="@+id/editId"/>
+			<EditText android:id="@+id/editId" android:editable="false"/>
 		</TableRow>
 		<TableRow>
 			<TextView android:id="@+id/textNombre" android:text="Nombre:"
