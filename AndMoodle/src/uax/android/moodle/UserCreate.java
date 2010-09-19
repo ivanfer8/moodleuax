@@ -131,13 +131,10 @@ public class UserCreate extends Activity {
 			// comprobamos que no haya un error
 			if (!xml.substring(0, 4).equals("ERROR") && !xml.contains(exception)) {
 				// no hay error
-				Toast.makeText(UserCreate.this, "Usuario creado con éxito!", Toast.LENGTH_LONG).show();
-				startActivity(new Intent(UserCreate.this, UserMenu.class));
+				//Toast.makeText(UserCreate.this, "Usuario creado con éxito!", Toast.LENGTH_LONG).show();
+				finish();
 			} else if (xml.contains(exception)) {
-				XStream xstream = new XStream(new DomDriver());
-				xstream.registerConverter(new ErrorConverter());
-				xstream.alias("EXCEPTION", ErrorException.class);
-				error = (ErrorException) xstream.fromXML(xml);
+				mostrarException((new ErrorConverter()).convertError(xml));
 			} else {
 				mostrarException(xml);
 			}

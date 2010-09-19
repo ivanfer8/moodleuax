@@ -46,9 +46,12 @@ public class ScreenMoodle {
 		try {
 			String ids = mTexto.getText().toString();
 			StringTokenizer token = new StringTokenizer(ids, ",");
+			String idParam = null;
 			int i = 0;
 			while (token.hasMoreTokens()) {
-				entity.addPart("userids[" + i + "]", new StringBody(token.nextToken()));
+				idParam = token.nextToken();
+				if(isNumeric(idParam))
+					entity.addPart("userids[" + i + "]", new StringBody(idParam));
 				i++;
 			}
 
@@ -59,6 +62,15 @@ public class ScreenMoodle {
 			e.printStackTrace();
 		}
 		return entity;
+	}
+	
+	private static boolean isNumeric(String cadena){
+		try {
+			Integer.parseInt(cadena);
+			return true;
+		} catch (NumberFormatException nfe){
+			return false;
+		}
 	}
 
 	/*

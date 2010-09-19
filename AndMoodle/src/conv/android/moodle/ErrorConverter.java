@@ -41,5 +41,11 @@ public class ErrorConverter implements Converter {
 		reader.moveDown();
 		reader.moveDown();
 	}
+	
+	public String convertError(String xml){
+		int indP = xml.indexOf("MESSAGE")+8;
+		int indL = xml.lastIndexOf("MESSAGE")-2;
+		return xml.substring(indP, indL);
+	}
 
 }

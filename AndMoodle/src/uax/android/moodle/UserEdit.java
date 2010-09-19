@@ -202,8 +202,7 @@ public class UserEdit extends Activity {
 			// comprobamos que no haya un error
 			if (!xml.substring(0, 4).equals("ERROR") && !xml.contains(exception)) {
 				// no hay error
-				Toast.makeText(UserEdit.this, "Usuario eliminado con éxito!", Toast.LENGTH_LONG).show();
-				startActivity(new Intent(UserEdit.this, UserMenu.class));
+				finish();
 			} else if (xml.contains(exception)) {
 				XStream xstream = new XStream(new DomDriver());
 				xstream.registerConverter(new ErrorConverter());
