@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<editmodel:ClassDiagramEditModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:editmodel="editmodel.xmi" xmlns:options="options.xmi" name="CheckSrcreen" size="702,753" id="conv.android.moodle" metadata="uml2-1.0" initialized="true" tag="1000" key="32303037303533312D3130303020416E644D6F6F646C652F7849533132393237">
+  <children xsi:type="editmodel:ClassEditModel" name="UserEdit" location="429,203" size="163,117" id="uax.android.moodle/UserEdit">
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="140,54">
+      <children xsi:type="editmodel:MethodEditModel" name="onCreate" id="uax.android.moodle/UserEdit#onCreate(Landroid.os.Bundle;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="onCreateOptionsMenu" id="uax.android.moodle/UserEdit#onCreateOptionsMenu(Landroid.view.Menu;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="onOptionsItemSelected" id="uax.android.moodle/UserEdit#onOptionsItemSelected(Landroid.view.MenuItem;)"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" name="UserCreate" location="452,50" size="117,81" id="uax.android.moodle/UserCreate">
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="74,18">
+      <children xsi:type="editmodel:MethodEditModel" name="onCreate" id="uax.android.moodle/UserCreate#onCreate(Landroid.os.Bundle;)"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" name="CheckSrcreen" location="270,130" size="137,103" id="conv.android.moodle/CheckSrcreen">
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="114,54">
+      <children xsi:type="editmodel:MethodEditModel" name="CheckSrcreen" id="conv.android.moodle/CheckSrcreen#CheckSrcreen()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="checkCreateUser" id="conv.android.moodle/CheckSrcreen#checkCreateUser()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="checkEditUser" id="conv.android.moodle/CheckSrcreen#checkEditUser()"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <sourceConnections xsi:type="editmodel:GeneralizationEditModel" autoLocated="true" id="fac.android.moodle/UserSingleton&lt;-conv.android.moodle/CheckSrcreen" source="//@children.2" target="//@children.3" targetEnd="//@children.2/@sourceConnections.0/@children.1" sourceEnd="//@children.2/@sourceConnections.0/@children.0" connectionRouterKind="Manual">
+      <children xsi:type="editmodel:AssociationEndEditModel" location="0,51" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="139,131"/>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:AssociationEditModel" autoLocated="true" id="fac.android.moodle/UserSingleton@usuSelecc+conv.android.moodle/CheckSrcreen@" source="//@children.2" target="//@children.3" targetEnd="//@children.2/@sourceConnections.1/@children.2" label="//@children.2/@sourceConnections.1/@children.0" sourceEnd="//@children.2/@sourceConnections.1/@children.1" connectionRouterKind="Manhattan">
+      <children xsi:type="editmodel:WireLabelEditModel" size="0,14" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="0,55" id="fac.android.moodle/UserSingleton@usuSelecc+conv.android.moodle/CheckSrcreen@|conv.android.moodle/CheckSrcreen#" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" name="usuSelecc" location="139,162" id="fac.android.moodle/UserSingleton@usuSelecc+conv.android.moodle/CheckSrcreen@|fac.android.moodle/UserSingleton#usuSelecc" multiplicityLabel="//@children.2/@sourceConnections.1/@children.2/@children.1" roleLabel="//@children.2/@sourceConnections.1/@children.2/@children.0" navigable="true">
+        <children xsi:type="editmodel:LabelEditModel" name=" - usuSelecc" location="196,219" size="61,14" anchorKind="LastPart"/>
+        <children xsi:type="editmodel:LabelEditModel" name="0..1" location="196,191" size="18,14" anchorKind="LastPart"/>
+      </children>
+    </sourceConnections>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.2/@sourceConnections.0 //@children.2/@sourceConnections.1" name="UserSingleton" location="50,50" size="139,423" id="fac.android.moodle/UserSingleton">
+    <children xsi:type="editmodel:CompartmentEditModel" size="116,306">
+      <children xsi:type="editmodel:AttributeEditModel" name="auth" id="fac.android.moodle/UserSingleton#auth"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="city" id="fac.android.moodle/UserSingleton#city"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="confirmed" id="fac.android.moodle/UserSingleton#confirmed"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="country" id="fac.android.moodle/UserSingleton#country"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="customFields" id="fac.android.moodle/UserSingleton#customFields"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="description" id="fac.android.moodle/UserSingleton#description"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="email" id="fac.android.moodle/UserSingleton#email"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="emailStop" id="fac.android.moodle/UserSingleton#emailStop"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="firstName" id="fac.android.moodle/UserSingleton#firstName"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="id" id="fac.android.moodle/UserSingleton#id"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="idNumber" id="fac.android.moodle/UserSingleton#idNumber"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="lang" id="fac.android.moodle/UserSingleton#lang"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="lastName" id="fac.android.moodle/UserSingleton#lastName"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="mailFormat" id="fac.android.moodle/UserSingleton#mailFormat"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="name" id="fac.android.moodle/UserSingleton#name"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="theme" id="fac.android.moodle/UserSingleton#theme"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="timeZone" id="fac.android.moodle/UserSingleton#timeZone"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="86,54">
+      <children xsi:type="editmodel:MethodEditModel" name="getInstance" id="fac.android.moodle/UserSingleton#getInstance()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getPass" id="fac.android.moodle/UserSingleton#getPass()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setPass" id="fac.android.moodle/UserSingleton#setPass(Ljava.lang.String;)"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
+  </children>
+  <diagramOptions xsi:type="options:ClassDiagramOptions" interactive="false" level="2" showScope="All" properties="open=conv.android.moodle/CheckSrcreen;wireOptions=7;Product=eUML2"/>
+  <boardSetting snapToGeometry="true" gridEnabled="true" gridSpacing="15,15" gridOrigin="0,0" rulerUnit="pixel" gridVisibility="false">
+    <leftRuler/>
+    <topRuler/>
+  </boardSetting>
+  <classDiagramPreferences xsi:type="editmodel:UMLClassDiagramPreference" showPopupBars="true" showConnectionHandles="true" attributeSorter="Natural" methodSorter="Natural" showClassStereotype="true" showPackageStereotype="true" showDependencyStereotype="true" showInterfaceStereotype="true" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
+</editmodel:ClassDiagramEditModel>
