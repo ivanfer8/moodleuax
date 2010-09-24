@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<editmodel:ClassDiagramEditModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:editmodel="editmodel.xmi" xmlns:options="options.xmi" name="UserMenu" size="1274,902" id="uax.android.moodle" metadata="uml2-1.0" initialized="true" scrolledY="96" tag="1000" key="32303037303533312D3130303020416E644D6F6F646C652F7849533132393237">
+  <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.2/@sourceConnections.1" name="Preferences" location="30,150" size="118,67" id="uax.android.moodle/Preferences" runTimeClassModel="onCreate(Landroid.os.Bundle;)">
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="74,18">
+      <children xsi:type="editmodel:MethodEditModel" name="onCreate" id="uax.android.moodle/Preferences#onCreate(Landroid.os.Bundle;)"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" showMethodsReturnType="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPrivateAttributes="true" showProtectedAttributes="true" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showProtectedMethods="true" showPublicMethods="true" showPackageMethods="true" showPrivateMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.2/@sourceConnections.0" name="ErrorException" location="600,450" size="136,135" id="fac.android.moodle/ErrorException" runTimeClassModel="descError,ErrorException(),codError,ErrorException(Ljava.lang.String;Ljava.lang.String;)">
+    <children xsi:type="editmodel:CompartmentEditModel" size="101,36">
+      <children xsi:type="editmodel:AttributeEditModel" name="codError" id="fac.android.moodle/ErrorException#codError"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="descError" id="fac.android.moodle/ErrorException#descError"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="101,36">
+      <children xsi:type="editmodel:MethodEditModel" name="ErrorException" id="fac.android.moodle/ErrorException#ErrorException()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="ErrorException" id="fac.android.moodle/ErrorException#ErrorException(Ljava.lang.String;Ljava.lang.String;)"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" showMethodsReturnType="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPrivateAttributes="true" showProtectedAttributes="true" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showProtectedMethods="true" showPublicMethods="true" showPackageMethods="true" showPrivateMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" name="UserMenu" location="225,373" size="208,373" id="uax.android.moodle/UserMenu" runTimeClassModel="returnRes,viewOrders,funcion,entity,mBuscar,preferences,token,mostrarException(Ljava.lang.String;),onOptionsItemSelected(Landroid.view.MenuItem;),onListItemClick(Landroid.widget.ListView;Landroid.view.View;IJ),onCreate(Landroid.os.Bundle;),mTexto,onCreateOptionsMenu(Landroid.view.Menu;),usuario,m_ProgressDialog,usuSelecc,listUserById,host,rEQST_USEREDIT">
+    <children xsi:type="editmodel:CompartmentEditModel" size="185,234">
+      <children xsi:type="editmodel:AttributeEditModel" name="entity" id="uax.android.moodle/UserMenu#entity"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="funcion" id="uax.android.moodle/UserMenu#funcion"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="host" id="uax.android.moodle/UserMenu#host"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="mBuscar" id="uax.android.moodle/UserMenu#mBuscar"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="mTexto" id="uax.android.moodle/UserMenu#mTexto"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="m_ProgressDialog" id="uax.android.moodle/UserMenu#m_ProgressDialog"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="preferences" id="uax.android.moodle/UserMenu#preferences"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="rEQST_USEREDIT" id="uax.android.moodle/UserMenu#rEQST_USEREDIT"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="returnRes" id="uax.android.moodle/UserMenu#returnRes"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="token" id="uax.android.moodle/UserMenu#token"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="usuSelecc" id="uax.android.moodle/UserMenu#usuSelecc"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="usuario" id="uax.android.moodle/UserMenu#usuario"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="viewOrders" id="uax.android.moodle/UserMenu#viewOrders"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="184,90">
+      <children xsi:type="editmodel:MethodEditModel" name="mostrarException" id="uax.android.moodle/UserMenu#mostrarException(Ljava.lang.String;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="onCreate" id="uax.android.moodle/UserMenu#onCreate(Landroid.os.Bundle;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="onCreateOptionsMenu" id="uax.android.moodle/UserMenu#onCreateOptionsMenu(Landroid.view.Menu;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="onListItemClick" id="uax.android.moodle/UserMenu#onListItemClick(Landroid.widget.ListView;Landroid.view.View;IJ)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="onOptionsItemSelected" id="uax.android.moodle/UserMenu#onOptionsItemSelected(Landroid.view.MenuItem;)"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <sourceConnections xsi:type="editmodel:AssociationEditModel" autoLocated="true" id="fac.android.moodle/ErrorException@error+uax.android.moodle/UserMenu@" source="//@children.2" target="//@children.1" targetEnd="//@children.2/@sourceConnections.0/@children.2" label="//@children.2/@sourceConnections.0/@children.0" sourceEnd="//@children.2/@sourceConnections.0/@children.1" connectionRouterKind="Manhattan">
+      <children xsi:type="editmodel:WireLabelEditModel" size="0,14" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="208,144" id="fac.android.moodle/ErrorException@error+uax.android.moodle/UserMenu@|uax.android.moodle/UserMenu#" attachSource="true" roleLabel="//@children.2/@sourceConnections.0/@children.1/@children.0">
+        <children xsi:type="editmodel:LabelEditModel" location="440,496" size="0,14" anchorKind="FirstPart"/>
+      </children>
+      <children xsi:type="editmodel:AssociationEndEditModel" name="error" location="0,67" id="fac.android.moodle/ErrorException@error+uax.android.moodle/UserMenu@|fac.android.moodle/ErrorException#error" multiplicityLabel="//@children.2/@sourceConnections.0/@children.2/@children.1" roleLabel="//@children.2/@sourceConnections.0/@children.2/@children.0" navigable="true">
+        <children xsi:type="editmodel:LabelEditModel" name=" - error" location="559,496" size="34,14" anchorKind="LastPart"/>
+        <children xsi:type="editmodel:LabelEditModel" name="1" location="587,524" size="6,14" anchorKind="LastPart"/>
+      </children>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="uax.android.moodle/UserMenu->uax.android.moodle/Preferences" source="//@children.2" target="//@children.0" targetEnd="//@children.2/@sourceConnections.1/@children.2" label="//@children.2/@sourceConnections.1/@children.0" sourceEnd="//@children.2/@sourceConnections.1/@children.1" connectionRouterKind="Manual">
+      <children xsi:type="editmodel:WireLabelEditModel" size="0,14" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="0,23" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="81,67"/>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:AssociationEditModel" autoLocated="true" id="uax.android.moodle/UserMenu$OrderAdapter@m_adapter+uax.android.moodle/UserMenu@" source="//@children.2" target="//@children.3" targetEnd="//@children.2/@sourceConnections.2/@children.2" label="//@children.2/@sourceConnections.2/@children.0" sourceEnd="//@children.2/@sourceConnections.2/@children.1" connectionRouterKind="Manhattan">
+      <children xsi:type="editmodel:WireLabelEditModel" size="0,14" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="208,10" id="uax.android.moodle/UserMenu$OrderAdapter@m_adapter+uax.android.moodle/UserMenu@|uax.android.moodle/UserMenu#" attachSource="true" roleLabel="//@children.2/@sourceConnections.2/@children.1/@children.0">
+        <children xsi:type="editmodel:LabelEditModel" location="440,362" size="0,14" anchorKind="FirstPart"/>
+      </children>
+      <children xsi:type="editmodel:AssociationEndEditModel" name="m_adapter" location="10,117" id="uax.android.moodle/UserMenu$OrderAdapter@m_adapter+uax.android.moodle/UserMenu@|uax.android.moodle/UserMenu$OrderAdapter#m_adapter" multiplicityLabel="//@children.2/@sourceConnections.2/@children.2/@children.1" roleLabel="//@children.2/@sourceConnections.2/@children.2/@children.0" navigable="true">
+        <children xsi:type="editmodel:LabelEditModel" name=" - m_adapter" location="550,304" size="61,14" anchorKind="LastPart"/>
+        <children xsi:type="editmodel:LabelEditModel" name="0..1" location="518,304" size="18,14" anchorKind="LastPart"/>
+      </children>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:GeneralizationEditModel" autoLocated="true" id="android.app/ListActivity&lt;-uax.android.moodle/UserMenu" source="//@children.2" target="//@children.4" targetEnd="//@children.2/@sourceConnections.3/@children.1" sourceEnd="//@children.2/@sourceConnections.3/@children.0" connectionRouterKind="Manual">
+      <children xsi:type="editmodel:AssociationEndEditModel" location="84,0" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="54,43"/>
+    </sourceConnections>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" showMethodsReturnType="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPrivateAttributes="true" showProtectedAttributes="true" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showProtectedMethods="true" showPublicMethods="true" showPackageMethods="true" showPrivateMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.2/@sourceConnections.2" name="OrderAdapter" location="533,180" size="153,117" id="uax.android.moodle/UserMenu$OrderAdapter" runTimeClassModel="getView(ILandroid.view.View;Landroid.view.ViewGroup;),items,OrderAdapter(Landroid.content.Context;ILjava.util.ArrayList;)">
+    <children xsi:type="editmodel:CompartmentEditModel" size="130,18">
+      <children xsi:type="editmodel:AttributeEditModel" name="items" id="uax.android.moodle/UserMenu$OrderAdapter#items"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="103,36">
+      <children xsi:type="editmodel:MethodEditModel" name="OrderAdapter" id="uax.android.moodle/UserMenu$OrderAdapter#OrderAdapter(Landroid.content.Context;ILjava.util.ArrayList;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getView" id="uax.android.moodle/UserMenu$OrderAdapter#getView(ILandroid.view.View;Landroid.view.ViewGroup;)"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" showMethodsReturnType="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPrivateAttributes="true" showProtectedAttributes="true" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showProtectedMethods="true" showPublicMethods="true" showPackageMethods="true" showPrivateMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.2/@sourceConnections.3" name="ListActivity" location="255,195" size="110,43" id="android.app/ListActivity" runTimeClassModel="">
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" showMethodsReturnType="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" packageIndication="3"/>
+  </children>
+  <diagramOptions xsi:type="options:ClassDiagramOptions" interactive="false" showScope="All" properties="open=uax.android.moodle/UserMenu;wireOptions=7;Product=eUML2"/>
+  <boardSetting snapToGeometry="true" gridEnabled="true" gridSpacing="15,15" gridOrigin="0,0" rulerUnit="pixel" gridVisibility="false">
+    <leftRuler/>
+    <topRuler>
+      <guides position="930"/>
+    </topRuler>
+  </boardSetting>
+  <classDiagramPreferences xsi:type="editmodel:UMLClassDiagramPreference" showPopupBars="true" showConnectionHandles="true" showMethodsReturnType="true" attributeSorter="Natural" methodSorter="Natural" showClassStereotype="true" showPackageStereotype="true" showDependencyStereotype="true" showInterfaceStereotype="true" innerClassSorter="Natural" showPrivateAttributes="true" showProtectedAttributes="true" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showProtectedMethods="true" showPublicMethods="true" showPackageMethods="true" showPrivateMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
+</editmodel:ClassDiagramEditModel>

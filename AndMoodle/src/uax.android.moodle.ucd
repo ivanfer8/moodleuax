@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<editmodel:ClassDiagramEditModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:editmodel="editmodel.xmi" xmlns:options="options.xmi" name="uax.android.moodle" size="634,368" id="." metadata="uml2-1.0" initialized="true" tag="1000" key="32303037303533312D3130303020416E644D6F6F646C652F7849533132393237">
+  <children xsi:type="editmodel:PackageEditModel" name="uax.android.moodle" location="45,45" size="236,131" id="uax.android.moodle"/>
+  <children xsi:type="editmodel:PackageEditModel" name="fac.android.moodle" location="175,250" size="159,60" id="fac.android.moodle"/>
+  <children xsi:type="editmodel:PackageEditModel" name="conv.android.moodle" location="310,205" size="170,60" id="conv.android.moodle"/>
+  <diagramOptions xsi:type="options:ClassDiagramOptions" interactive="false" properties="open=uax.android.moodle;wireOptions=4;Product=eUML2;displayOptions=1"/>
+  <boardSetting snapToGeometry="true" gridEnabled="true" gridSpacing="15,15" gridOrigin="0,0" rulerUnit="pixel" gridVisibility="false">
+    <leftRuler/>
+    <topRuler/>
+  </boardSetting>
+  <classDiagramPreferences xsi:type="editmodel:UMLClassDiagramPreference" showPopupBars="true" showConnectionHandles="true" attributeSorter="Natural" methodSorter="Natural" showClassStereotype="true" showPackageStereotype="true" showDependencyStereotype="true" showInterfaceStereotype="true" innerClassSorter="Natural" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3"/>
+</editmodel:ClassDiagramEditModel>

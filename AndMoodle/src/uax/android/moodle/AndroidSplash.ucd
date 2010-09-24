@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<editmodel:ClassDiagramEditModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:editmodel="editmodel.xmi" xmlns:options="options.xmi" name="AndroidSplash" size="618,2449" id="uax.android.moodle" metadata="uml2-1.0" initialized="true" tag="1000" key="32303037303533312D3130303020416E644D6F6F646C652F7849533132393237">
+  <children xsi:type="editmodel:ClassEditModel" name="AndroidSplash" location="50,143" size="135,67" id="uax.android.moodle/AndroidSplash">
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="74,18">
+      <children xsi:type="editmodel:MethodEditModel" name="onCreate" id="uax.android.moodle/AndroidSplash#onCreate(Landroid.os.Bundle;)"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <sourceConnections xsi:type="editmodel:GeneralizationEditModel" autoLocated="true" id="android.app/Activity&lt;-uax.android.moodle/AndroidSplash" source="//@children.0" target="//@children.1" targetEnd="//@children.0/@sourceConnections.0/@children.1" sourceEnd="//@children.0/@sourceConnections.0/@children.0" connectionRouterKind="Manual">
+      <children xsi:type="editmodel:AssociationEndEditModel" location="67,0" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="44,43"/>
+    </sourceConnections>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.0/@sourceConnections.0" name="Activity" location="73,50" size="88,43" id="android.app/Activity" runTimeClassModel="">
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" packageIndication="3"/>
+  </children>
+  <diagramOptions xsi:type="options:ClassDiagramOptions" interactive="false" level="2" showScope="All" properties="open=uax.android.moodle/AndroidSplash;wireOptions=7;Product=eUML2"/>
+  <boardSetting snapToGeometry="true" gridEnabled="true" gridSpacing="15,15" gridOrigin="0,0" rulerUnit="pixel" gridVisibility="false">
+    <leftRuler/>
+    <topRuler/>
+  </boardSetting>
+  <classDiagramPreferences xsi:type="editmodel:UMLClassDiagramPreference" showPopupBars="true" showConnectionHandles="true" attributeSorter="Natural" methodSorter="Natural" showClassStereotype="true" showPackageStereotype="true" showDependencyStereotype="true" showInterfaceStereotype="true" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
+</editmodel:ClassDiagramEditModel>
