@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<editmodel:ClassDiagramEditModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:editmodel="editmodel.xmi" xmlns:options="options.xmi" name="CallWebService" size="1180,919" id="conv.android.moodle" metadata="uml2-1.0" initialized="true" tag="1000" key="32303037303533312D3130303020416E644D6F6F646C652F7849533132393237">
+  <children xsi:type="editmodel:ClassEditModel" name="UserSingleton" location="945,50" size="182,477" id="fac.android.moodle/UserSingleton" runTimeClassModel="password,timeZone,theme,lang,getInstance(),idNumber,emailStop,firstName,id,lastName,mailFormat,country,UserSingleton(),customFields,createInstance(),confirmed,description,auth,email,getPass(),name,setPass(Ljava.lang.String;),city">
+    <children xsi:type="editmodel:CompartmentEditModel" size="116,324">
+      <children xsi:type="editmodel:AttributeEditModel" name="auth" id="fac.android.moodle/UserSingleton#auth"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="city" id="fac.android.moodle/UserSingleton#city"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="confirmed" id="fac.android.moodle/UserSingleton#confirmed"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="country" id="fac.android.moodle/UserSingleton#country"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="customFields" id="fac.android.moodle/UserSingleton#customFields"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="description" id="fac.android.moodle/UserSingleton#description"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="email" id="fac.android.moodle/UserSingleton#email"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="emailStop" id="fac.android.moodle/UserSingleton#emailStop"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="firstName" id="fac.android.moodle/UserSingleton#firstName"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="id" id="fac.android.moodle/UserSingleton#id"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="idNumber" id="fac.android.moodle/UserSingleton#idNumber"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="lang" id="fac.android.moodle/UserSingleton#lang"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="lastName" id="fac.android.moodle/UserSingleton#lastName"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="mailFormat" id="fac.android.moodle/UserSingleton#mailFormat"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="name" id="fac.android.moodle/UserSingleton#name"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="password" id="fac.android.moodle/UserSingleton#password"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="theme" id="fac.android.moodle/UserSingleton#theme"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="timeZone" id="fac.android.moodle/UserSingleton#timeZone"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="102,90">
+      <children xsi:type="editmodel:MethodEditModel" name="UserSingleton" id="fac.android.moodle/UserSingleton#UserSingleton()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="createInstance" id="fac.android.moodle/UserSingleton#createInstance()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getInstance" id="fac.android.moodle/UserSingleton#getInstance()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getPass" id="fac.android.moodle/UserSingleton#getPass()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setPass" id="fac.android.moodle/UserSingleton#setPass(Ljava.lang.String;)"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" showMethodsReturnType="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPrivateAttributes="true" showProtectedAttributes="true" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showProtectedMethods="true" showPublicMethods="true" showPackageMethods="true" showPrivateMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.5/@sourceConnections.1 //@children.3/@sourceConnections.2" name="UserCreate" location="613,50" size="208,387" id="uax.android.moodle/UserCreate" runTimeClassModel="viewOrders,etSApellido,returnRes,userCreate,etPApellido,funcion,entity,preferences,token,mostrarException(Ljava.lang.String;),onCreate(Landroid.os.Bundle;),mButton,etPass,m_ProgressDialog,host,etNombre,etCorreo,recogerDatos()">
+    <children xsi:type="editmodel:CompartmentEditModel" size="185,252">
+      <children xsi:type="editmodel:AttributeEditModel" name="host" id="uax.android.moodle/UserCreate#host"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="entity" id="uax.android.moodle/UserCreate#entity"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="etCorreo" id="uax.android.moodle/UserCreate#etCorreo"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="token" id="uax.android.moodle/UserCreate#token"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="etPApellido" id="uax.android.moodle/UserCreate#etPApellido"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="funcion" id="uax.android.moodle/UserCreate#funcion"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="preferences" id="uax.android.moodle/UserCreate#preferences"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="returnRes" id="uax.android.moodle/UserCreate#returnRes"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="etNombre" id="uax.android.moodle/UserCreate#etNombre"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="mButton" id="uax.android.moodle/UserCreate#mButton"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="viewOrders" id="uax.android.moodle/UserCreate#viewOrders"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="m_ProgressDialog" id="uax.android.moodle/UserCreate#m_ProgressDialog"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="etPass" id="uax.android.moodle/UserCreate#etPass"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="etSApellido" id="uax.android.moodle/UserCreate#etSApellido"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="114,72">
+      <children xsi:type="editmodel:MethodEditModel" name="onCreate" id="uax.android.moodle/UserCreate#onCreate(Landroid.os.Bundle;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="userCreate" id="uax.android.moodle/UserCreate#userCreate"/>
+      <children xsi:type="editmodel:MethodEditModel" name="mostrarException" id="uax.android.moodle/UserCreate#mostrarException(Ljava.lang.String;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="recogerDatos" id="uax.android.moodle/UserCreate#recogerDatos()"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" showMethodsReturnType="true" attributeSorter="Visibility" methodSorter="Visibility" innerClassSorter="Natural" showPrivateAttributes="true" showProtectedAttributes="true" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showProtectedMethods="true" showPublicMethods="true" showPackageMethods="true" showPrivateMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.5/@sourceConnections.2 //@children.3/@sourceConnections.1" name="UserMenu" location="687,482" size="208,405" id="uax.android.moodle/UserMenu" runTimeClassModel="returnRes,viewOrders,funcion,entity,mBuscar,preferences,token,onOptionsItemSelected(Landroid.view.MenuItem;),mostrarException(Ljava.lang.String;),onListItemClick(Landroid.widget.ListView;Landroid.view.View;IJ),onCreate(Landroid.os.Bundle;),mTexto,onCreateOptionsMenu(Landroid.view.Menu;),usuario,m_ProgressDialog,usuSelecc,listUserById,host,rEQST_USEREDIT">
+    <children xsi:type="editmodel:CompartmentEditModel" size="185,234">
+      <children xsi:type="editmodel:AttributeEditModel" name="m_ProgressDialog" id="uax.android.moodle/UserMenu#m_ProgressDialog"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="entity" id="uax.android.moodle/UserMenu#entity"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="funcion" id="uax.android.moodle/UserMenu#funcion"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="viewOrders" id="uax.android.moodle/UserMenu#viewOrders"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="mTexto" id="uax.android.moodle/UserMenu#mTexto"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="returnRes" id="uax.android.moodle/UserMenu#returnRes"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="usuario" id="uax.android.moodle/UserMenu#usuario"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="preferences" id="uax.android.moodle/UserMenu#preferences"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="mBuscar" id="uax.android.moodle/UserMenu#mBuscar"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="host" id="uax.android.moodle/UserMenu#host"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="token" id="uax.android.moodle/UserMenu#token"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="usuSelecc" id="uax.android.moodle/UserMenu#usuSelecc"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="rEQST_USEREDIT" id="uax.android.moodle/UserMenu#rEQST_USEREDIT"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="184,108">
+      <children xsi:type="editmodel:MethodEditModel" name="onOptionsItemSelected" id="uax.android.moodle/UserMenu#onOptionsItemSelected(Landroid.view.MenuItem;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="onCreateOptionsMenu" id="uax.android.moodle/UserMenu#onCreateOptionsMenu(Landroid.view.Menu;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="onCreate" id="uax.android.moodle/UserMenu#onCreate(Landroid.os.Bundle;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="listUserById" id="uax.android.moodle/UserMenu#listUserById"/>
+      <children xsi:type="editmodel:MethodEditModel" name="mostrarException" id="uax.android.moodle/UserMenu#mostrarException(Ljava.lang.String;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="onListItemClick" id="uax.android.moodle/UserMenu#onListItemClick(Landroid.widget.ListView;Landroid.view.View;IJ)"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" showMethodsReturnType="true" attributeSorter="Visibility" methodSorter="Visibility" innerClassSorter="Natural" showPrivateAttributes="true" showProtectedAttributes="true" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showProtectedMethods="true" showPublicMethods="true" showPackageMethods="true" showPrivateMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" name="ErrorException" location="386,555" size="136,135" id="fac.android.moodle/ErrorException" runTimeClassModel="descError,ErrorException(),codError,ErrorException(Ljava.lang.String;Ljava.lang.String;)">
+    <children xsi:type="editmodel:CompartmentEditModel" size="101,36">
+      <children xsi:type="editmodel:AttributeEditModel" name="descError" id="fac.android.moodle/ErrorException#descError"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="codError" id="fac.android.moodle/ErrorException#codError"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="101,36">
+      <children xsi:type="editmodel:MethodEditModel" name="ErrorException" id="fac.android.moodle/ErrorException#ErrorException(Ljava.lang.String;Ljava.lang.String;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="ErrorException" id="fac.android.moodle/ErrorException#ErrorException()"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <sourceConnections xsi:type="editmodel:AssociationEditModel" autoLocated="true" id="fac.android.moodle/ErrorException@error+uax.android.moodle/UserEdit@" source="//@children.3" target="//@children.4" targetEnd="//@children.3/@sourceConnections.0/@children.2" label="//@children.3/@sourceConnections.0/@children.0" sourceEnd="//@children.3/@sourceConnections.0/@children.1" connectionRouterKind="Manhattan">
+      <children xsi:type="editmodel:WireLabelEditModel" size="0,14" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" name="error" location="0,67" id="fac.android.moodle/ErrorException@error+uax.android.moodle/UserEdit@|fac.android.moodle/ErrorException#error" attachSource="true" multiplicityLabel="//@children.3/@sourceConnections.0/@children.1/@children.1" roleLabel="//@children.3/@sourceConnections.0/@children.1/@children.0" navigable="true">
+        <children xsi:type="editmodel:LabelEditModel" name=" - error" location="345,601" size="34,14" anchorKind="FirstPart"/>
+        <children xsi:type="editmodel:LabelEditModel" name="1" location="373,629" size="6,14" anchorKind="FirstPart"/>
+      </children>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="208,254" id="fac.android.moodle/ErrorException@error+uax.android.moodle/UserEdit@|uax.android.moodle/UserEdit#"/>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:AssociationEditModel" autoLocated="true" id="fac.android.moodle/ErrorException@error+uax.android.moodle/UserMenu@" source="//@children.3" target="//@children.2" targetEnd="//@children.3/@sourceConnections.1/@children.2" label="//@children.3/@sourceConnections.1/@children.0" sourceEnd="//@children.3/@sourceConnections.1/@children.1" connectionRouterKind="Manhattan">
+      <children xsi:type="editmodel:WireLabelEditModel" size="0,14" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" name="error" location="136,67" id="fac.android.moodle/ErrorException@error+uax.android.moodle/UserMenu@|fac.android.moodle/ErrorException#error" attachSource="true" multiplicityLabel="//@children.3/@sourceConnections.1/@children.1/@children.1" roleLabel="//@children.3/@sourceConnections.1/@children.1/@children.0" navigable="true">
+        <children xsi:type="editmodel:LabelEditModel" name=" - error" location="529,601" size="34,14" anchorKind="FirstPart"/>
+        <children xsi:type="editmodel:LabelEditModel" name="1" location="529,629" size="6,14" anchorKind="FirstPart"/>
+      </children>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="0,140" id="fac.android.moodle/ErrorException@error+uax.android.moodle/UserMenu@|uax.android.moodle/UserMenu#"/>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:AssociationEditModel" autoLocated="true" id="fac.android.moodle/ErrorException@error+uax.android.moodle/UserCreate@" source="//@children.3" target="//@children.1" targetEnd="//@children.3/@sourceConnections.2/@children.2" label="//@children.3/@sourceConnections.2/@children.0" sourceEnd="//@children.3/@sourceConnections.2/@children.1" connectionRouterKind="Manhattan">
+      <children xsi:type="editmodel:WireLabelEditModel" size="0,14" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" name="error" location="126,0" id="fac.android.moodle/ErrorException@error+uax.android.moodle/UserCreate@|fac.android.moodle/ErrorException#error" attachSource="true" multiplicityLabel="//@children.3/@sourceConnections.2/@children.1/@children.1" roleLabel="//@children.3/@sourceConnections.2/@children.1/@children.0" navigable="true">
+        <children xsi:type="editmodel:LabelEditModel" name=" - error" location="471,534" size="34,14" anchorKind="FirstPart"/>
+        <children xsi:type="editmodel:LabelEditModel" name="1" location="519,534" size="6,14" anchorKind="FirstPart"/>
+      </children>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="0,377" id="fac.android.moodle/ErrorException@error+uax.android.moodle/UserCreate@|uax.android.moodle/UserCreate#"/>
+    </sourceConnections>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" showMethodsReturnType="true" attributeSorter="Visibility" methodSorter="Visibility" innerClassSorter="Natural" showPrivateAttributes="true" showProtectedAttributes="true" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showProtectedMethods="true" showPublicMethods="true" showPackageMethods="true" showPrivateMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.5/@sourceConnections.0 //@children.3/@sourceConnections.0" name="UserEdit" location="50,368" size="208,531" id="uax.android.moodle/UserEdit" runTimeClassModel="etSApellido,viewOrders,userUpdate,etCountry,preferences,onCreate(Landroid.os.Bundle;),onCreateOptionsMenu(Landroid.view.Menu;),funcionEdit,m_ProgressDialog,host,etNombre,funcionDelete,returnRes,etId,etLang,etCity,userDelete,etPApellido,etAuth,entity,token,mostrarException(Ljava.lang.String;),onOptionsItemSelected(Landroid.view.MenuItem;),etCorreo,etDesc,recogerDatos()">
+    <children xsi:type="editmodel:CompartmentEditModel" size="185,342">
+      <children xsi:type="editmodel:AttributeEditModel" name="etCity" id="uax.android.moodle/UserEdit#etCity"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="etSApellido" id="uax.android.moodle/UserEdit#etSApellido"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="etCorreo" id="uax.android.moodle/UserEdit#etCorreo"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="etAuth" id="uax.android.moodle/UserEdit#etAuth"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="etLang" id="uax.android.moodle/UserEdit#etLang"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="funcionDelete" id="uax.android.moodle/UserEdit#funcionDelete"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="host" id="uax.android.moodle/UserEdit#host"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="preferences" id="uax.android.moodle/UserEdit#preferences"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="etPApellido" id="uax.android.moodle/UserEdit#etPApellido"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="etId" id="uax.android.moodle/UserEdit#etId"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="m_ProgressDialog" id="uax.android.moodle/UserEdit#m_ProgressDialog"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="token" id="uax.android.moodle/UserEdit#token"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="etDesc" id="uax.android.moodle/UserEdit#etDesc"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="entity" id="uax.android.moodle/UserEdit#entity"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="funcionEdit" id="uax.android.moodle/UserEdit#funcionEdit"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="etNombre" id="uax.android.moodle/UserEdit#etNombre"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="etCountry" id="uax.android.moodle/UserEdit#etCountry"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="viewOrders" id="uax.android.moodle/UserEdit#viewOrders"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="returnRes" id="uax.android.moodle/UserEdit#returnRes"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="184,126">
+      <children xsi:type="editmodel:MethodEditModel" name="onOptionsItemSelected" id="uax.android.moodle/UserEdit#onOptionsItemSelected(Landroid.view.MenuItem;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="onCreate" id="uax.android.moodle/UserEdit#onCreate(Landroid.os.Bundle;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="onCreateOptionsMenu" id="uax.android.moodle/UserEdit#onCreateOptionsMenu(Landroid.view.Menu;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="userUpdate" id="uax.android.moodle/UserEdit#userUpdate"/>
+      <children xsi:type="editmodel:MethodEditModel" name="recogerDatos" id="uax.android.moodle/UserEdit#recogerDatos()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="mostrarException" id="uax.android.moodle/UserEdit#mostrarException(Ljava.lang.String;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="userDelete" id="uax.android.moodle/UserEdit#userDelete"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" showMethodsReturnType="true" attributeSorter="Visibility" methodSorter="Visibility" innerClassSorter="Natural" showPrivateAttributes="true" showProtectedAttributes="true" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showProtectedMethods="true" showPublicMethods="true" showPackageMethods="true" showPrivateMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" name="CallWebService" location="353,177" size="169,193" id="conv.android.moodle/CallWebService" runTimeClassModel="Consume(),host,entity,readFromBuffer(Ljava.io.BufferedReader;),CallWebService,token,createUrl(Ljava.util.ArrayList;),moodleWebService">
+    <children xsi:type="editmodel:CompartmentEditModel" size="146,72">
+      <children xsi:type="editmodel:AttributeEditModel" name="token" id="conv.android.moodle/CallWebService#token"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="entity" id="conv.android.moodle/CallWebService#entity"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="host" id="conv.android.moodle/CallWebService#host"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="moodleWebService" id="conv.android.moodle/CallWebService#moodleWebService"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="141,72">
+      <children xsi:type="editmodel:MethodEditModel" name="Consume" id="conv.android.moodle/CallWebService#Consume()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="CallWebService" id="conv.android.moodle/CallWebService#CallWebService"/>
+      <children xsi:type="editmodel:MethodEditModel" name="createUrl" id="conv.android.moodle/CallWebService#createUrl(Ljava.util.ArrayList;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="readFromBuffer" id="conv.android.moodle/CallWebService#readFromBuffer(Ljava.io.BufferedReader;)"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <sourceConnections xsi:type="editmodel:AssociationEditModel" autoLocated="true" id="conv.android.moodle/CallWebService@callWebService+uax.android.moodle/UserEdit@userEdit" source="//@children.5" target="//@children.4" targetEnd="//@children.5/@sourceConnections.0/@children.2" label="//@children.5/@sourceConnections.0/@children.0" sourceEnd="//@children.5/@sourceConnections.0/@children.1" connectionRouterKind="Manhattan">
+      <children xsi:type="editmodel:WireLabelEditModel" size="0,14" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" name="callWebService" location="10,193" id="conv.android.moodle/CallWebService@callWebService+uax.android.moodle/UserEdit@userEdit|conv.android.moodle/CallWebService#callWebService" attachSource="true" multiplicityLabel="//@children.5/@sourceConnections.0/@children.1/@children.1" roleLabel="//@children.5/@sourceConnections.0/@children.1/@children.0" navigable="true">
+        <children xsi:type="editmodel:LabelEditModel" name=" - callWebService" location="370,377" size="85,14" anchorKind="FirstPart"/>
+        <children xsi:type="editmodel:LabelEditModel" name="0..1" location="338,377" size="18,14" anchorKind="FirstPart"/>
+      </children>
+      <children xsi:type="editmodel:AssociationEndEditModel" name="userEdit" location="208,10" id="conv.android.moodle/CallWebService@callWebService+uax.android.moodle/UserEdit@userEdit|uax.android.moodle/UserEdit#userEdit" multiplicityLabel="//@children.5/@sourceConnections.0/@children.2/@children.1" roleLabel="//@children.5/@sourceConnections.0/@children.2/@children.0" navigable="true">
+        <children xsi:type="editmodel:LabelEditModel" name=" - userEdit" location="265,385" size="49,14" anchorKind="LastPart"/>
+        <children xsi:type="editmodel:LabelEditModel" name="0..1" location="265,357" size="18,14" anchorKind="LastPart"/>
+      </children>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:AssociationEditModel" autoLocated="true" id="conv.android.moodle/CallWebService@callWebService+uax.android.moodle/UserCreate@userCreate" source="//@children.5" target="//@children.1" targetEnd="//@children.5/@sourceConnections.1/@children.2" label="//@children.5/@sourceConnections.1/@children.0" sourceEnd="//@children.5/@sourceConnections.1/@children.1" connectionRouterKind="Manhattan">
+      <children xsi:type="editmodel:WireLabelEditModel" size="0,14" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" name="callWebService" location="169,96" id="conv.android.moodle/CallWebService@callWebService+uax.android.moodle/UserCreate@userCreate|conv.android.moodle/CallWebService#callWebService" attachSource="true" multiplicityLabel="//@children.5/@sourceConnections.1/@children.1/@children.1" roleLabel="//@children.5/@sourceConnections.1/@children.1/@children.0" navigable="true">
+        <children xsi:type="editmodel:LabelEditModel" name=" - callWebService" location="529,252" size="85,14" anchorKind="FirstPart"/>
+        <children xsi:type="editmodel:LabelEditModel" name="0..1" location="529,280" size="18,14" anchorKind="FirstPart"/>
+      </children>
+      <children xsi:type="editmodel:AssociationEndEditModel" name="userCreate" location="0,223" id="conv.android.moodle/CallWebService@callWebService+uax.android.moodle/UserCreate@userCreate|uax.android.moodle/UserCreate#userCreate" multiplicityLabel="//@children.5/@sourceConnections.1/@children.2/@children.1" roleLabel="//@children.5/@sourceConnections.1/@children.2/@children.0" navigable="true">
+        <children xsi:type="editmodel:LabelEditModel" name=" - userCreate" location="542,252" size="64,14" anchorKind="LastPart"/>
+        <children xsi:type="editmodel:LabelEditModel" name="0..1" location="588,280" size="18,14" anchorKind="LastPart"/>
+      </children>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:AssociationEditModel" autoLocated="true" id="conv.android.moodle/CallWebService@callWebService+uax.android.moodle/UserMenu@userMenu" source="//@children.5" target="//@children.2" targetEnd="//@children.5/@sourceConnections.2/@children.2" label="//@children.5/@sourceConnections.2/@children.0" sourceEnd="//@children.5/@sourceConnections.2/@children.1" connectionRouterKind="Manhattan">
+      <children xsi:type="editmodel:WireLabelEditModel" size="0,14" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" name="callWebService" location="159,193" id="conv.android.moodle/CallWebService@callWebService+uax.android.moodle/UserMenu@userMenu|conv.android.moodle/CallWebService#callWebService" attachSource="true" multiplicityLabel="//@children.5/@sourceConnections.2/@children.1/@children.1" roleLabel="//@children.5/@sourceConnections.2/@children.1/@children.0" navigable="true">
+        <children xsi:type="editmodel:LabelEditModel" name=" - callWebService" location="420,377" size="85,14" anchorKind="FirstPart"/>
+        <children xsi:type="editmodel:LabelEditModel" name="0..1" location="519,377" size="18,14" anchorKind="FirstPart"/>
+      </children>
+      <children xsi:type="editmodel:AssociationEndEditModel" name="userMenu" location="0,10" id="conv.android.moodle/CallWebService@callWebService+uax.android.moodle/UserMenu@userMenu|uax.android.moodle/UserMenu#userMenu" multiplicityLabel="//@children.5/@sourceConnections.2/@children.2/@children.1" roleLabel="//@children.5/@sourceConnections.2/@children.2/@children.0" navigable="true">
+        <children xsi:type="editmodel:LabelEditModel" name=" - userMenu" location="622,499" size="58,14" anchorKind="LastPart"/>
+        <children xsi:type="editmodel:LabelEditModel" name="0..1" location="662,471" size="18,14" anchorKind="LastPart"/>
+      </children>
+    </sourceConnections>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" showMethodsReturnType="true" attributeSorter="Visibility" methodSorter="Visibility" innerClassSorter="Natural" showPrivateAttributes="true" showProtectedAttributes="true" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showProtectedMethods="true" showPublicMethods="true" showPackageMethods="true" showPrivateMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
+  </children>
+  <diagramOptions xsi:type="options:ClassDiagramOptions" interactive="false" level="2" showScope="All" properties="open=conv.android.moodle/CallWebService;wireOptions=7;Product=eUML2"/>
+  <boardSetting snapToGeometry="true" gridEnabled="true" gridSpacing="15,15" gridOrigin="0,0" rulerUnit="pixel" gridVisibility="false">
+    <leftRuler/>
+    <topRuler/>
+  </boardSetting>
+  <classDiagramPreferences xsi:type="editmodel:UMLClassDiagramPreference" showPopupBars="true" showConnectionHandles="true" showMethodsReturnType="true" attributeSorter="Natural" methodSorter="Natural" showClassStereotype="true" showPackageStereotype="true" showDependencyStereotype="true" showInterfaceStereotype="true" innerClassSorter="Natural" showPrivateAttributes="true" showProtectedAttributes="true" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showProtectedMethods="true" showPublicMethods="true" showPackageMethods="true" showPrivateMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
+</editmodel:ClassDiagramEditModel>
