@@ -6,7 +6,6 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -121,11 +120,14 @@ public class UserEdit extends Activity {
 					// aqui la acción
 					recogerDatos();
 					entity = (new ScreenMoodle()).editarUser(entity);
-					if ((new CheckSrcreen()).checkEditUser()) {
+					String pantallaError = (new CheckSrcreen()).checkEditUser();
+					if (pantallaError.length()<=0) {
 						userUpdate(funcionEdit, entity);
+						error.reset();
 					} else {
 						// datos incorrectos
-						mostrarException("Error en los datos de entrada");
+						mostrarException(pantallaError);
+						runOnUiThread(returnRes);
 					}
 				}
 			};
@@ -176,7 +178,7 @@ public class UserEdit extends Activity {
 			try {
 				if (error.getDescError().length() > 0) {
 					// Se ha producido un error
-					Toast.makeText(UserEdit.this, "Se ha producido un error.", Toast.LENGTH_LONG).show();
+					Toast.makeText(UserEdit.this, "Se ha producido un error.\n"+error.getDescError(), Toast.LENGTH_LONG).show();
 				} else {
 					Toast.makeText(UserEdit.this, "Usuario modificado correctamente.", Toast.LENGTH_LONG).show();
 				}

@@ -29,5 +29,10 @@ public class ErrorException {
 	public void setDescError(String descError) {
 		this.descError = descError;
 	}
+	
+	public void reset(){
+		this.descError = "";
+		this.codError = "";
+	}
 
 }

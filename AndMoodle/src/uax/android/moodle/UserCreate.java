@@ -4,7 +4,6 @@ import org.apache.http.entity.mime.MultipartEntity;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -12,10 +11,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-
-import com.thoughtworks.xstream.XStream;
-import com.thoughtworks.xstream.io.xml.DomDriver;
-
 import conv.android.moodle.CallWebService;
 import conv.android.moodle.CheckSrcreen;
 import conv.android.moodle.ErrorConverter;
@@ -78,12 +73,14 @@ public class UserCreate extends Activity {
 						// aqui la acción
 						recogerDatos();
 						entity = (new ScreenMoodle()).crearUser(entity);
-						if ((new CheckSrcreen()).checkCreateUser()) {
+						String pantallaError = (new CheckSrcreen()).checkCreateUser();
+						if (pantallaError.length()<=0) {
 							//datos correctos
 							userCreate(funcion, entity);
+							error.reset();
 						} else {
 							//datos incorrectos
-							error.setDescError("Error en los datos de entrada");
+							error.setDescError(pantallaError);
 							runOnUiThread(returnRes);
 						}
 					}
