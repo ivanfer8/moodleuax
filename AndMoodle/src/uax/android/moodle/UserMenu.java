@@ -84,7 +84,6 @@ public class UserMenu extends ListActivity {
 					@Override
 					public void run() {
 						usuario = new ArrayList<User>();
-						usuario.removeAll(usuario);
 						entity = (new ScreenMoodle()).recogerId(mTexto, entity);
 						listUserById(funcion, entity);
 					}
@@ -92,6 +91,7 @@ public class UserMenu extends ListActivity {
 				try {
 					Thread thread = new Thread(null, viewOrders, "MagentoBackground");
 					thread.start();
+					usuario.removeAll(usuario);
 					m_adapter.clear();
 					m_ProgressDialog = ProgressDialog.show(UserMenu.this, "Por favor, espere...", "Buscando usuarios ...", true);
 				} catch (Exception e) {
