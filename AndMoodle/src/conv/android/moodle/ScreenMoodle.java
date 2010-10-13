@@ -42,12 +42,14 @@ public class ScreenMoodle {
 	 * Listar usuarios por id Recogemos los ids que ha metido el usuario en la
 	 * caja de texto
 	 */
+	@SuppressWarnings("null")
 	public MultipartEntity recogerId(EditText mTexto, MultipartEntity entity) {
 		try {
 			String ids = mTexto.getText().toString();
 			StringTokenizer token = new StringTokenizer(ids, ",");
 			String idParam = null;
 			int i = 0;
+			entity = new MultipartEntity();
 			while (token.hasMoreTokens()) {
 				idParam = token.nextToken();
 				if(isNumeric(idParam))
