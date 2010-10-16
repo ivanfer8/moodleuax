@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="wrap_content" android:layout_height="wrap_content">
+	<ScrollView android:id="@+id/ScrollView01" android:layout_width="wrap_content" android:layout_height="wrap_content">
+	<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+		android:layout_height="fill_parent" android:layout_width="fill_parent"  android:spacing="40dip"
+                android:stretchColumns="4">
+		<TableRow>
+			<TextView android:id="@+id/textId" android:text="Id usuario:"
+				android:textColor="#ffffff" />
+			<EditText android:id="@+id/editId" android:editable="false"/>
+		</TableRow>
+		<TableRow>
+			<TextView android:id="@+id/textNombre" android:text="Nombre:"
+				android:textColor="#ffffff" />
+			<EditText android:id="@+id/editNombre" android:width="240px" />
+		</TableRow>		
+		<TableRow>
+			<TextView android:id="@+id/textPApellido" android:text="P.Apellido:"
+				android:textColor="#ffffff" />
+			<EditText android:id="@+id/editPApellido"/>
+		</TableRow>
+		<TableRow>
+			<TextView android:id="@+id/textPSapellido" android:text="S.Apellido:"
+				android:textColor="#ffffff" />
+			<EditText android:id="@+id/editPSapellido"/>
+		</TableRow>
+		<TableRow>
+			<TextView android:id="@+id/textCorreo" android:text="Em@il:"
+				android:textColor="#ffffff" />
+			<EditText android:id="@+id/editCorreo"/>
+		</TableRow>
+		<TableRow>
+			<TextView android:id="@+id/textAuth" android:text="Autorización:"
+				android:textColor="#ffffff" />
+			<EditText android:id="@+id/editAuth"/>
+		</TableRow>
+		<TableRow>
+			<TextView android:id="@+id/textLang" android:text="Lenguaje:"
+				android:textColor="#ffffff" />
+			<EditText android:id="@+id/editLang"/>
+		</TableRow>
+		<TableRow>
+			<TextView android:id="@+id/textDesc" android:text="Descripción:"
+				android:textColor="#ffffff" />
+			<EditText android:id="@+id/editDesc"/>
+		</TableRow>
+		<TableRow>
+			<TextView android:id="@+id/textCity" android:text="Ciudad:"
+				android:textColor="#ffffff" />
+			<EditText android:id="@+id/editCity"/>
+		</TableRow>
+		<TableRow>
+			<TextView android:id="@+id/textCountry" android:text="País:"
+				android:textColor="#ffffff" />
+			<EditText android:id="@+id/editCountry"/>
+		</TableRow>
+		<View
+        android:layout_height="2dip"
+        android:background="#FF909090" />
+	</TableLayout>
+	</ScrollView>
+</LinearLayout>

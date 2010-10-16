@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+	<PreferenceCategory>
+		<EditTextPreference android:key="token"
+			android:summary="Por favor, introduzca su token" android:title="User Token"></EditTextPreference>
+		<EditTextPreference android:key="host"
+			android:summary="Por favor, introduzca la dirección de moodle" android:title="Host"></EditTextPreference>
+	</PreferenceCategory>
+</PreferenceScreen>
