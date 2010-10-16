@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="wrap_content" android:layout_height="wrap_content">
+	<ScrollView android:id="@+id/ScrollView01"
+		android:layout_width="wrap_content" android:layout_height="wrap_content">
+		<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+			android:layout_height="fill_parent" android:layout_width="fill_parent"
+			android:spacing="40dip" android:stretchColumns="4">
+			<TableRow>
+				<TextView android:id="@+id/textNombre" android:text="Nombre:"
+					android:textColor="#ffffff" />
+				<EditText android:id="@+id/editNombre" android:width="240px" />
+			</TableRow>
+			<TableRow>
+				<TextView android:id="@+id/textPass" android:text="Password: "
+					android:textColor="#ffffff" />
+				<EditText android:id="@+id/editPass" android:width="240px"
+					android:password="true" />
+			</TableRow>
+			<TableRow>
+				<TextView android:id="@+id/textPApellido" android:text="P.Apellido:"
+					android:textColor="#ffffff" />
+				<EditText android:id="@+id/editPApellido" />
+			</TableRow>
+			<TableRow>
+				<TextView android:id="@+id/textPSapellido" android:text="S.Apellido:"
+					android:textColor="#ffffff" />
+				<EditText android:id="@+id/editPSapellido" />
+			</TableRow>
+			<TableRow>
+				<TextView android:id="@+id/textCorreo" android:text="Em@il:"
+					android:textColor="#ffffff" />
+				<EditText android:id="@+id/editCorreo" />
+			</TableRow>
+			<Button android:text="Crear" android:id="@+id/buttonCrear"
+				android:layout_width="wrap_content" android:layout_height="wrap_content"
+				android:clickable="true" android:gravity="right|center"
+				android:layout_marginTop="5px" android:layout_marginRight="10px" android:layout_marginLeft="250px"></Button>
+
+		</TableLayout>
+	</ScrollView>
+</RelativeLayout>
